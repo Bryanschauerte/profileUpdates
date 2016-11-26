@@ -1,0 +1,157 @@
+#productContainer .innerProductCont {
+  color: #220A37;
+  min-width: 30%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+#productContainer h1 {
+  text-align: center;
+  padding: 5%; }
+
+#productContainer .productText {
+  padding: 10%;
+  background-color: #220A37;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  #productContainer .productText h1 {
+    letter-spacing: 4px;
+    font-weight: 100; }
+  #productContainer .productText p {
+    font-family: Roboto; }
+  #productContainer .productText .left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    background-color: #fff;
+    color: #220A37; }
+  #productContainer .productText .right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  #productContainer .productText .productLink {
+    background-color: #fff;
+    color: #220A37;
+    border-radius: 3em;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    text-align: center;
+    -ms-flex-item-align: end;
+        align-self: flex-end; }
+
+#productContainer .product {
+  padding: 0 5%; }
+
+#productContainer .productImage {
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+/*svg component*/
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+@keyframes pulse {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+.colorOne {
+  fill: "#01b826"; }
+
+.colorTwo {
+  fill: "#0B1968"; }
+
+.colorThree {
+  fill: "#0193b8"; }
+
+.colorFour {
+  fill: "#813772"; }
+
+.colorFive {
+  fill: "#b82601"; }
+
+.colorSix {
+  fill: "#062f4f"; }
+
+.SVGbottomLeft {
+  -webkit-animation: pulse 10s ease-in-out infinite alternate;
+          animation: pulse 10s ease-in-out infinite alternate; }
+
+.SVGbottomRight {
+  -webkit-animation: pulse 10s ease-in-out infinite alternate;
+          animation: pulse 10s ease-in-out infinite alternate; }
+
+.SVGtopRight {
+  -webkit-animation: pulse 10s ease-in-out infinite alternate;
+          animation: pulse 10s ease-in-out infinite alternate; }
+
+.SVGtopLeft {
+  -webkit-animation: pulse 10s ease-in-out infinite alternate;
+          animation: pulse 10s ease-in-out infinite alternate; }
+
+.SVGCtopCenter {
+  -webkit-animation: pulse 10s ease-in-out infinite alternate;
+          animation: pulse 10s ease-in-out infinite alternate; }
+
+.SVGCcenter {
+  -webkit-animation: pulse 10s ease-in-out infinite alternate;
+          animation: pulse 10s ease-in-out infinite alternate; }
+
+.svgContainer {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; }
+
+.svgContainment {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; }
+
+.svgOuter {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; }
+
+li {
+  color: cornflowerblue;
+  font-size: 20px; }
+
+pre {
+  background-color: #fcfcfc;
+  border: 1px solid #a0a0a0;
+  text-align: center;
+  width: 30px;
+  padding: 5px;
+  color: salmon; }
+
+body {
+  margin: 0; }

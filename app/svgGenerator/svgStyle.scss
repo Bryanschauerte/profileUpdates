@@ -1,0 +1,66 @@
+/*svg component*/
+@keyframes pulse {
+  from {
+    transform: scale(.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.colorOne {
+  fill: "#01b826";
+}
+.colorTwo {
+  fill: "#0B1968";
+}
+.colorThree {
+  fill: "#0193b8";
+}
+.colorFour {
+  fill: "#813772";
+}
+.colorFive {
+  fill: "#b82601";
+}
+.colorSix {
+  fill: "#062f4f";
+}
+.SVGbottomLeft {
+  animation: pulse 10s ease-in-out infinite alternate;
+}
+.SVGbottomRight {
+  animation: pulse 10s ease-in-out infinite alternate;
+}
+.SVGtopRight {
+  animation: pulse 10s ease-in-out infinite alternate;
+}
+.SVGtopLeft {
+  animation: pulse 10s ease-in-out infinite alternate;
+}
+.SVGCtopCenter {
+  animation: pulse 10s ease-in-out infinite alternate;
+}
+.SVGCcenter {
+  animation: pulse 10s ease-in-out infinite alternate;
+}
+.svgContainer {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.svgContainment {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.svgOuter {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
