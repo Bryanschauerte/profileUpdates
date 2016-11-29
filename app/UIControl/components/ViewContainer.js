@@ -1,24 +1,24 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+import DisplayContain from './presentation/DisplayContain';
+import Footer from './presentation/Footer';
 
 import * as uiActions from '../actions/index';
-
-import Navigation from './Navigation';
-import Landing from './presentation/Landing';
-import SplitView from './SplitView';
-import Reset from './presentation/Reset';
-import CatalogDisplay from './presentation/CatalogDisplay';
+import Menu from './Menu';
 
 class ViewContainer extends Component{
   constructor(props){
     super(props);
 
-    this.showView = this.showView.bind(this);
+
     this.resetAnim = this.resetAnim.bind(this);
     this.delayDispatch = this.delayDispatch.bind(this);
+    this.handleFooterClick = this.handleFooterClick.bind(this);
 
   }
+  handleFooterClick(){
 
+  }
   resetAnim(change){
     this.props.dispatch(uiActions.animationReset(change));
 
@@ -32,15 +32,7 @@ class ViewContainer extends Component{
 
   }
 
-  showView(){
-    if(this.props.stageIndex == 0) {
-          return <CatalogDisplay uiActions ={uiActions} delayDispatch={this.delayDispatch} {...this.props}/>
-    }else{
-        return <SplitView delayDispatch={this.delayDispatch} {...this.props}/>
-    }
 
-
-  }
   render(){
 
     return(
@@ -49,24 +41,27 @@ class ViewContainer extends Component{
         display:'flex',
         alignSelf: 'center',
         height:"95%",
-        width:"99%",
-        margin: '0 .5%'}}>
+        width:"100%",
+        justifyContent:'center'}}>
         <div style={{
 
         display:'flex',
         flexDirection:'column',
         height:"95%",
-        width:"99%"}}>
-          <div style={{display:'flex', height:"9%", marginBottom:'2%'}}>
-            <Navigation
+        width:"95%"}}>
+          <div style={{display:'flex', height:"4%"}}>
+            {/* <Navigation
               uiActions= {uiActions}
               delayDispatch={this.delayDispatch}
-              {...this.props}/>
+              {...this.props}/> */}
           </div>
-          <div style={{display:'flex',height:"89%"}}>
-              {this.showView()}
-          </div>
+
+            <Menu delayDispatch={this.delayDispatch} {...this.props}/>
+            <Footer
+              handleClick={this.handleFooterClick}
+              uiActions={uiActions} {...this.props}/>
             </div>
+
         </div>
     )
   }
@@ -80,7 +75,11 @@ const mapStateToProps = (state)=>{
     categorySelected: state.uIState.uiStructure.categorySelected,
     animations: state.uIState.uiStructure.animations,
     menuOpen: state.uIState.uiStructure.menuOpen,
-    hoveringID: state.uIState.uiStructure.animations.hover
+    hoveringID: state.uIState.uiStructure.animations.hover,
+    itemIndexSelected: state.uIState.uiStructure.itemIndexSelected,
+    previewIndex: state.uIState.uiStructure.previewIndex,
+    dataBaseContents:state.uIState.uiStructure.dataBaseContents,
+    mainContentIndex:state.uIState.uiStructure.mainContentIndex
   }
 }
 

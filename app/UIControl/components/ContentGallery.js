@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import { StaggeredMotion, spring } from 'react-motion';
+import GallerySubText from './presentation/GallerySubText';
 
-
-class Product extends Component {
+class ContentGallery extends Component {
 
 
     render(){
@@ -25,28 +25,36 @@ class Product extends Component {
       const outterWrapperStyles = {
 
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flexWrap:'wrap',
+        flexFlow: 'row',
+        flex:1,
+        margin:'2% 0%'
       }
 
       const innerWrapperStyles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        flexFlow: 'row nowrap'
+        flex:1
       }
 
       const defaultStyleObj = { x: startX, y: startY, o: 1, f:1, s: scaleHeight }
       const specialStyleObj = { x: startX, y: startY, o: 1, f:2, s: scaleHeightFinal}
 
-      const itemStyleArr = this.props.productArray.map( (item, index) =>  {
+      const itemStyleArr = this.props.contentsArray.map( (item, index) =>  {
         return index == this.props.activeIndex?  specialStyleObj: defaultStyleObj
       })
 
       return (
         <div
+          style={{
+            display:'flex',
+            flex:1
+          }}>
+        <div
         key={Math.random()}
         style={outterWrapperStyles}>
-
           <StaggeredMotion
             key={Math.random()}
             defaultStyles={itemStyleArr}
@@ -68,7 +76,7 @@ class Product extends Component {
                 ? {
                   y: spring(0, { stiffness: initialStiffness, damping: initialDamping }),
                   o: spring(.5,{ stiffness: initialStiffness, damping: initialDamping }),
-                  f: spring(2,{ stiffness: initialStiffness, damping: initialDamping }),
+                  f: spring(1,{ stiffness: initialStiffness, damping: initialDamping }),
                   s: spring(scaleHeightFinal)
                 }
                 // Final stiffness and damping
@@ -89,6 +97,9 @@ class Product extends Component {
 
                   const productStyles = {
                     display:'flex',
+                    color:'#fff',
+                    // minHeight:window.innerHeight/2 +'px',
+                    flex:1,
                     // order: i == activeIndex? -1: i,
                     WebkitTransform: `translate3d(0, ${style.y}px, 0) scale(${style.s})`,
                     opacity: style.o,
@@ -98,41 +109,35 @@ class Product extends Component {
                   }
 
                   return <div
-                            className="innerProductCont"
-                            onClick={()=>this.props.testFun(i)}
-                            key={this.props.productArray[i].title+ Math.random()}
+
+                            onClick={()=>this.props._handleClick(i)}
+                            key={this.props.contentsArray[i].title+ Math.random()}
                             style={productStyles}>
 
+                            <h1>{this.props.contentsArray[i].title}</h1>
                               <div
-                                className='productImage'
-                                style={{
-                                  backgroundImage:'url('+this.props.productArray[i].imageSrc+ ')',
-                                  height:"200px",
-                                  width: "100%",
-                                  marginTop:"2%",
 
+                                style={{
+                                  backgroundImage:'url('+this.props.contentsArray[i].previewContents.imageArrayPreview+ ')',
+                                  height:window.innerHeight/4.5 +'px',
+                                  width: "100%",
+                                  backgroundRepeat: 'no-repeat',
                                   backgroundSize:'contain',
-                                  backgroundPosition: 'center'
+                                  backgroundPosition: 'center center'
                                 }}>
 
                               </div>
-                            { activeIndex==i? <div className= "productText">
-                                  <div className='left'>
-                                      <h1>
-                                        {this.props.productArray[i].title}
-                                      </h1>
-                                  </div>
-                                  <div className='right'>
-                                    <p>
-                                      {this.props.productArray[i].desciption}
-                                    </p>
+                            { activeIndex==i? <div style={{
+                              display:'flex',
+                              color:'#fff',
+                              flexDirection:'column',
+                              flex:'1',
+                              width:'90%'
 
-                                    <div
-                                      href={this.props.productArray[i].link}
-                                      className ='productLink'>
-                                      {this.props.productArray[i].linkTitle}
-                                    </div>
-                                  </div>
+
+                            }}>
+                            {this.props.children}
+
                               </div>:null}
                             </div>
                     })}
@@ -140,18 +145,20 @@ class Product extends Component {
             }
           </StaggeredMotion>
         </div>
-      )
+      </div>)
     }
 
 
 
   }
-
-  Product.defaultProps= {
+  ContentGallery.propTypes={
+    contentsArray:PropTypes.array
+  }
+  ContentGallery.defaultProps= {
     startY:1,
     startOpacity:1,
     scaleHeight:1,
-    scaleHeightFinal:.5,
+    scaleHeightFinal:.7,
     initialStiffness:70,
     initialDamping:16,
     finalStiffness:100,
@@ -159,4 +166,4 @@ class Product extends Component {
 
   }
 
-export default Product;
+export default ContentGallery;

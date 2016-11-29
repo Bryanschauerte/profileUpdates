@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import SvgGenerator from '../svgGenerator/SvgGenerator'
 import UIControl from '../UIControl/UIControl';
-
+import Axios from 'axios';
 
 class Base extends React.Component{
   constructor(props){
@@ -13,6 +13,7 @@ class Base extends React.Component{
       windowHeight: null
     }
     this._handleResize = this._handleResize.bind(this);
+
 
     }
 
@@ -52,7 +53,7 @@ class Base extends React.Component{
           height:this.state.windowHeight
         }}>  <SvgGenerator
             windowHeight={windowHeight}
-            showBackgAni={this.props.categorySelected !=null}
+            showBackgAni={this.props.categorySelected ==null}
             windowWidth={windowWidth}/>
           <div style={{position:'absolute', width:this.state.windowWidth, height:this.state.windowHeight}}>
             <UIControl />

@@ -130,7 +130,7 @@ let tokgen = new TokenGenerator();
       return(
 
 
-        <div key ={tokgen.generate()} className='svgContainer' style={{height:this.props.windowHeight,width:this.props.windowWidth}} >
+        <div key ={tokgen.generate()} className='svgContainer' style={{height:this.props.windowHeight,width:this.props.windowWidth, backgroundColor:"black"}} >
 
           {this._generateCircles()}
         </div>

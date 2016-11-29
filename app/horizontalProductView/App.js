@@ -1,7 +1,7 @@
 import React from 'react';
 import * as HPVActions from './actions/index';
 import {connect} from 'react-redux';
-import Product from './components/Product'
+import Products from './components/Products'
 
 class HorizPreView extends React.Component {
     constructor(props){
@@ -18,7 +18,6 @@ class HorizPreView extends React.Component {
       return this.props.dispatch(HPVActions.forwardIndex())
     }
     selectIndex(index){
-      console.log('app selectIndex')
       return this.props.dispatch(HPVActions.selectIndex(index))
     }
     backIndex(){
@@ -29,44 +28,31 @@ class HorizPreView extends React.Component {
     }
 
     render() {
-      const {height, width}= this.props;
+
         return (
             <div
-
+              style={{
+                display: 'flex',
+                flex:1,
+                justifyContent:'center'
+              }}
               id='productContainer'>
 
-                {/* <input
-                    onClick={this.forwardIndex}
-                    type="button"
-                    value="Next"
-                    />
-
-                <input
-                  onClick={this.backIndex}
-                  type='button'
-                  value='Previous'/>
-
-                <pre>
-                    {this.props.activeIndex}
-                </pre>
-
-
-                <div> */}
-                  <Product
+                  <Products
+                    testFun={this.selectIndex}
                     selectIndex = {HPVActions.selectIndex}
-                    testFun = {this.selectIndex}
                     dispatch = {this.props.dispatch}
                     activeIndex={this.props.activeIndex}
                     productArray= {this.props.productArray}/>
                 </div>
-            // </div>
+
         )
     }
 }
 
 
 const mapStateToProps = (state) => {
-console.log(state, "state")
+
     return {
       activeIndex: state.horizontalPView.index,
       productArray: state.horizontalPView.productArray

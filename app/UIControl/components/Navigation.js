@@ -18,7 +18,7 @@ class Navigation extends Component{
   }
     categorySelect(index){
       this.props.dispatch(uiActions.categorySelect(null));
-      this.props.dispatch(uiActions.changeViewIndex(1));
+      this.props.dispatch(uiActions.changeStageIndex(1));
       this.props.delayDispatch('categorySelect', index);
     }
     renderIcon(index){
