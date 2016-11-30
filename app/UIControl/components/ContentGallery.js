@@ -131,12 +131,11 @@ class ContentGallery extends Component {
                               display:'flex',
                               color:'#fff',
                               flexDirection:'column',
-                              flex:'1',
-                              width:'90%'
+                              flex:'1'
 
 
                             }}>
-                            {this.props.children}
+                          {this.props.children}
 
                               </div>:null}
                             </div>

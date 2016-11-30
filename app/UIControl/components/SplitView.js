@@ -74,7 +74,7 @@ class SplitView extends Component{
                             _handleClick={this.previewGalleryItem}
                             activeIndex={this.props.previewIndex}
                             contentsArray={this.props.dataBaseContents}>
-                            <div>
+
                               <GallerySubText
                                 _handleClick={this.selectItemToView}
                                 previewIndex={this.props.previewIndex}
@@ -82,7 +82,7 @@ class SplitView extends Component{
 
                               />
 
-                              </div>
+
                             </ContentGallery>
                             :null}
 

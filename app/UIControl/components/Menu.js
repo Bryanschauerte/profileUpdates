@@ -71,15 +71,7 @@ class Menu extends Component{
          };
        });
      }
-     shouldComponentUpdate(nextProps, nextState){
 
-       if(nextProps.hoveringID || nextProps.animations){
-         return false;
-       }else{
-          return true;
-       }
-
-     }
 
   render(){
     console.log('rerendered')
@@ -104,9 +96,8 @@ class Menu extends Component{
                     display:'flex',
                     flex:1,
                     flexDirection:'column',
-
-                    width:'100%',
-                  position:"relative"}}>
+                    position:"relative"
+                  }}>
                     <div style={{
                       width:'100%',
                       height:x+'%',
@@ -120,21 +111,25 @@ class Menu extends Component{
                         position:'relative',
                         display:'flex',
                         flexDirection:'row',
-                        // height:x+'%',
+                        alignContent: 'center',
                         flex:'1',
                         border:'1px solid #fff',
                         color:'#fff',
                         fontWeight:'200'}}>
+
                       {categories.map((item, index)=>{
                         return <div
                                   style={{
                                     display:'flex',
+                                    cursor:'pointer',
                                     flex:'1',
                                     justifyContent:'space-around',
                                     opacity: categorySelected!=index? o:null,
+                                    borderBottom: categorySelected==index? '2px solid #fff':'',
                                     position:'relative'}}
                                     key={item+index}
                                     onClick={this.selectCategory.bind(null, index)}>
+
                           <h3 style={{letterSpacing:"5px"}}>
                             {categories[index].toUpperCase()}
                           </h3>

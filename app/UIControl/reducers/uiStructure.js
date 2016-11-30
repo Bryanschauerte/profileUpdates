@@ -183,9 +183,11 @@ const defaultState = {
   mainContentIndex:0,
   categories:[ 'blogs', 'demos', 'projects','about me'],
   menuOpen:true,
+  showContact:false,
   navReduce:false,
   animations:{
-    hover:null
+    hover:null,
+    rotate:null
   },
   dataBaseContents: dummy
 }
@@ -221,6 +223,12 @@ export default function uiStructure(state = defaultState, action){
       animations.hover = action.payload;
       return {...state, animations:animations};
 
+    case "ANIMATION_ROTATE":
+
+      let rotate = state.animations;
+      rotate.rotate = action.payload;
+      return {...state, animations:rotate};
+
 
     case "TOGGLE_NAV_REDUCE":
       return {...state, navReduce: !state.navReduce}
@@ -249,6 +257,13 @@ export default function uiStructure(state = defaultState, action){
 
     case "CLOSE_MENU":
       return {...state, menuOpen:false};
+
+    case "SHOW_CONTACT":
+
+      return {...state, showContact: true};
+
+    case "HIDE_CONTACT":
+      return {...state, showContact:false};
 
     default:
       return state;

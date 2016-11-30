@@ -17,7 +17,7 @@ const DisplaySingleItem = ({handleMouseEnter, handleMouseLeave, fillColor, activ
 
                   <Motion
                     defaultStyle={{
-                      fontSize: window.innerWidth * .02,
+                      fontSize: window.innerWidth * .05,
                       fontSpace:window.innerWidth * .025,
                       r:0,
 
@@ -26,9 +26,9 @@ const DisplaySingleItem = ({handleMouseEnter, handleMouseLeave, fillColor, activ
                       }}
                     style={{
                     rgbColor: spring(activeHover? 230:50, {stiffness:800, damping:500}),
-                    fontSize: spring(activeHover?  window.innerWidth * .02 :30),
+                    fontSize: spring(activeHover?  window.innerWidth * .05 :50),
                     fontSpace: spring(activeHover? window.innerWidth * .025 :0),
-                    r:spring(activeHover? 100:0)
+                    r:spring(activeHover? 0:100)
 
 
                   }}>

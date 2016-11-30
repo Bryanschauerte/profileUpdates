@@ -16,13 +16,19 @@ export function changeStageIndex(index){
     payload: index
   }
 }
+export function rotateItem(item){
+  return {
+    type:'ANIMATION_ROTATE',
+    payload: item
+  }
+}
 export function selectContentItem(index){
   return {
     type:'CONTENT_ITEM_SELECT',
     payload: index
   }
 }
-selectMain
+
 export function selectMain(index){
   return {
     type:'SELECT_MAIN_CONTENT_INDEX',
@@ -60,6 +66,16 @@ export function closeMenu(){
   }
 }
 
+export function showContact(){
+  return {
+    type:'SHOW_CONTACT'
+  }
+}
+export function hideContact(){
+  return {
+    type:'HIDE_CONTACT'
+  }
+}
 export function hoverChange(animations){
 
   return {

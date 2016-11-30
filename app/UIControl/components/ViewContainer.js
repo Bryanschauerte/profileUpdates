@@ -1,7 +1,5 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import DisplayContain from './presentation/DisplayContain';
-import Footer from './presentation/Footer';
 
 import * as uiActions from '../actions/index';
 import Menu from './Menu';
@@ -13,12 +11,10 @@ class ViewContainer extends Component{
 
     this.resetAnim = this.resetAnim.bind(this);
     this.delayDispatch = this.delayDispatch.bind(this);
-    this.handleFooterClick = this.handleFooterClick.bind(this);
+    this.handleFooterClick = this.delayDispatch.bind(this);
 
   }
-  handleFooterClick(){
 
-  }
   resetAnim(change){
     this.props.dispatch(uiActions.animationReset(change));
 
@@ -57,9 +53,7 @@ class ViewContainer extends Component{
           </div>
 
             <Menu delayDispatch={this.delayDispatch} {...this.props}/>
-            <Footer
-              handleClick={this.handleFooterClick}
-              uiActions={uiActions} {...this.props}/>
+
             </div>
 
         </div>
@@ -73,9 +67,7 @@ const mapStateToProps = (state)=>{
     stageIndex: state.uIState.uiStructure.stageIndex,
     categories: state.uIState.uiStructure.categories,
     categorySelected: state.uIState.uiStructure.categorySelected,
-    animations: state.uIState.uiStructure.animations,
     menuOpen: state.uIState.uiStructure.menuOpen,
-    hoveringID: state.uIState.uiStructure.animations.hover,
     itemIndexSelected: state.uIState.uiStructure.itemIndexSelected,
     previewIndex: state.uIState.uiStructure.previewIndex,
     dataBaseContents:state.uIState.uiStructure.dataBaseContents,

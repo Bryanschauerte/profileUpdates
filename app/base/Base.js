@@ -55,7 +55,13 @@ class Base extends React.Component{
             windowHeight={windowHeight}
             showBackgAni={this.props.categorySelected ==null}
             windowWidth={windowWidth}/>
-          <div style={{position:'absolute', width:this.state.windowWidth, height:this.state.windowHeight}}>
+          <div style={{
+            position:'absolute',
+            width:this.state.windowWidth *.95,
+            height:this.state.windowHeight *.95,
+            top: "2.5%",
+            left:'2.5%'
+          }}>
             <UIControl />
           </div>
 
