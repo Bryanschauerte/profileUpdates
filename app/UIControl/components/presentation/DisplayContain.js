@@ -4,7 +4,7 @@ import Display from './Display';
 
 
 const DisplayContain = ({categories, categorySelected, contents})=>{
-console.log(contents, "contents display contents")
+
   return (
     <div
       style={{

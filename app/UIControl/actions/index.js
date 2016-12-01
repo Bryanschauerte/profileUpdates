@@ -29,12 +29,12 @@ export function selectContentItem(index){
   }
 }
 
-export function selectMain(index){
-  return {
-    type:'SELECT_MAIN_CONTENT_INDEX',
-    payload: index
-  }
-}
+// export function selectMain(index){
+//   return {
+//     type:'SELECT_MAIN_CONTENT_INDEX',
+//     payload: index
+//   }
+// }
 export function contentItemReset(){
   return {
     type:'CONTENT_ITEM_RESET'
@@ -55,14 +55,14 @@ export function categorySelect(index){
     payload: index
   }
 }
-export function openMenu(){
+export function justLanded(){
   return {
-    type:'OPEN_MENU'
+    type:'JUST_LANDED'
   }
 }
-export function closeMenu(){
+export function notJustLanded(){
   return {
-    type:'CLOSE_MENU'
+    type:'NOT_JUST_LANDED'
   }
 }
 
@@ -76,11 +76,11 @@ export function hideContact(){
     type:'HIDE_CONTACT'
   }
 }
-export function hoverChange(animations){
+export function hoverChange(hoverID){
 
   return {
     type:'ANIMATION_HOVER',
-    payload: animations
+    payload: hoverID
   }
 }
 

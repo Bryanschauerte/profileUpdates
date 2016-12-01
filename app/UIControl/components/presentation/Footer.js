@@ -21,13 +21,14 @@ class Footer extends Component {
   }
       hoverItem(hoverID){
         event.preventDefault();
-        const reset = null;
-         this.props.dispatch(uiActions.hoverChange(reset) );
+        const reset = 'footer reset';
+         this.props.dispatch(uiActions.hoverChange('footer reset') );
         return this.props.dispatch(uiActions.hoverChange(hoverID));
 
       }
       stopHoverItem(){
         const hoverID = null;
+        console.log('stop hover')
         return this.props.dispatch(uiActions.hoverChange(hoverID) );
       }
 
@@ -37,8 +38,8 @@ class Footer extends Component {
       render(){
 
         return (<div
-          onClick={()=>this.showContact()}
-          onMouseLeave={this.stopHoverItem}
+          onClick={this.showContact}
+
           style={{
             cursor:'pointer',
           display:'flex',

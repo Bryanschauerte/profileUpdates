@@ -4,7 +4,12 @@ import GallerySubText from './presentation/GallerySubText';
 
 class ContentGallery extends Component {
 
-
+  shouldComponentUpdate(nextProps, nextState){
+    if(nextProps.activeIndex != this.props.activeIndex){
+      return true;
+    }
+    return false
+  }
     render(){
 
       const {
@@ -62,7 +67,7 @@ class ContentGallery extends Component {
               prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
 
               if(i == this.props.activeIndex){
-                //final and inital
+
                 return {
                   y: spring(0, { stiffness: initialStiffness, damping: initialDamping }),
                   o: spring(1),
@@ -72,17 +77,15 @@ class ContentGallery extends Component {
               }else{
 
               return i === 0
-                // Initial stiffness and damping
+
                 ? {
                   y: spring(0, { stiffness: initialStiffness, damping: initialDamping }),
                   o: spring(.5,{ stiffness: initialStiffness, damping: initialDamping }),
                   f: spring(1,{ stiffness: initialStiffness, damping: initialDamping }),
                   s: spring(scaleHeightFinal)
                 }
-                // Final stiffness and damping
                 : {
                     y: spring(prevInterpolatedStyles[i - 1].y, { stiffness: finalStiffness, damping: finalDamping }),
-                    // o: spring(prevInterpolatedStyles[i - 1].o),
                     o: spring(.5,{ stiffness: finalStiffness, damping: finalDamping }),
                     f: spring(1),
                     s: spring(scaleHeightFinal,{ stiffness: finalStiffness, damping: finalDamping })
@@ -98,7 +101,7 @@ class ContentGallery extends Component {
                   const productStyles = {
                     display:'flex',
                     color:'#fff',
-                    // minHeight:window.innerHeight/2 +'px',
+                    cursor:'pointer',
                     flex:1,
                     // order: i == activeIndex? -1: i,
                     WebkitTransform: `translate3d(0, ${style.y}px, 0) scale(${style.s})`,

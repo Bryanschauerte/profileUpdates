@@ -1,7 +1,7 @@
 import React from 'react';
 
 const GallerySubText = ({_handleClick, previewIndex, contentsArray}) => {
-  console.log(previewIndex, "previewIndex")
+
   return(
 <div style={{
 

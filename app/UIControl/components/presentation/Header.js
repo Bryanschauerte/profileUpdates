@@ -20,13 +20,13 @@ class Header extends Component {
 
       hoverItem(hoverID){
         event.preventDefault();
-        const reset = null;
-         this.props.dispatch(uiActions.hoverChange(reset) );
+        // const reset = null;
+        //  this.props.dispatch(uiActions.hoverChange(reset) );
         return this.props.dispatch(uiActions.hoverChange(hoverID));
 
       }
       stopHoverItem(){
-        const hoverID = null;
+        const hoverID = 'header stop';
         return this.props.dispatch(uiActions.hoverChange(hoverID) );
       }
 
@@ -36,7 +36,7 @@ class Header extends Component {
       render(){
 
         return (<div
-          onMouseLeave={this.stopHoverItem}
+
           style={{
           display:'flex',
           width:'100%',
@@ -66,7 +66,7 @@ class Header extends Component {
                   }} >
 
                     <div
-                      onMouseLeave={this.stopHoverItem}
+
                       style={{
                         display:'flex',
                         letterSpacing:fontSpace+'px',

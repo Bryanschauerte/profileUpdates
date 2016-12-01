@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-import HorizPreView from '../../horizontalProductView/App'
 import * as uiActions from '../actions/index';
 import { Motion, StaggeredMotion, spring } from 'react-motion';
-import Options from './presentation/Options';
 import DisplayContain from './presentation/DisplayContain';
-
 import GallerySubText from './presentation/GallerySubText';
 import ContentGallery from './ContentGallery';
 
@@ -13,12 +10,10 @@ class SplitView extends Component{
     super(props);
     this.previewGalleryItem = this.previewGalleryItem.bind(this);
     this.selectItemToView = this.selectItemToView.bind(this);
-    this.selectMainContentIndex = this.selectMainContentIndex.bind(this);
+
   }
 
-  selectMainContentIndex(i){
-    this.props.dispatch(uiActions.selectMain(i));
-  }
+
   previewGalleryItem(i){
 
     this.props.dispatch(uiActions.previewItem(i));
@@ -29,7 +24,7 @@ class SplitView extends Component{
   }
 
   render(){
-    console.log(this.props, "split props")
+
 
     const{
       changeCategory,
@@ -44,21 +39,7 @@ class SplitView extends Component{
           }}>
                 {({x}) =>
 
-                <div
-                  style={{
-                    display:'flex',
-                    flex:1,
-                    flexDirection:'column',
-                    height:'100%',
-                    width:'100%',
-                  position:"relative"}}>
-                    <div style={{
-                      width:'100%',
-                      height:x+'%',
-                      position: 'absolute',
-                      opacity:'.5',
-                      backgroundColor: uiActions.getColorCategory(categorySelected)
-                    }} ></div>
+
 
                     <div
                       style={{
@@ -69,7 +50,7 @@ class SplitView extends Component{
 
                         flex:'1'}}>
 
-                        {this.props.itemIndexSelected==null?
+                        {this.props.itemIndexSelected==null  && this.props.categorySelected != null?
                           <ContentGallery
                             _handleClick={this.previewGalleryItem}
                             activeIndex={this.props.previewIndex}
@@ -98,12 +79,8 @@ class SplitView extends Component{
                           }
                         </div>:null}
 
-
-
-
-
                     </div>
-                  </div>
+
                   }
               </Motion>
 

@@ -5,7 +5,7 @@ import ImageSlider from './ImageSlider';
 
 const Display = (props)=>{
   const {contents} = props;
-console.log(contents, "vontent itemt from dispay")
+
     function _handleStringForUrl(string, index='all'){
 
       let arr = string.split(', ');

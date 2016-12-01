@@ -34,12 +34,13 @@ class UIControl extends Component{
 
   }
   handleLandingClick(){
-console.log('ding')
+
       event.preventDefault();
-      return this.props.dispatch(uiActions.closeMenu());
+      return this.props.dispatch(uiActions.notJustLanded());
 
 
   }
+
 
   render(){
 
@@ -53,9 +54,9 @@ console.log('ding')
         width:"100%"}}>
 
 
-            {this.props.menuOpen? <Landing handleClick={this.handleLandingClick}/>:
+            {this.props.justLanded? <Landing handleClick={this.handleLandingClick}/>:
             <div><Header />
-              <Menu delayDispatch={this.delayDispatch} {...this.props}/>
+              <Menu/>
             <Footer /></div>}
             {this.props.showContact? <ContactDisplay hideContact={this.hideContact}/>:null}
 
@@ -67,7 +68,7 @@ console.log('ding')
 }
 
 const mapStateToProps = (state)=>{
-  console.log('uicontroll', state)
+
   return{
     stageIndex: state.uIState.uiStructure.stageIndex,
     categories: state.uIState.uiStructure.categories,
@@ -76,7 +77,7 @@ const mapStateToProps = (state)=>{
     previewIndex: state.uIState.uiStructure.previewIndex,
     dataBaseContents:state.uIState.uiStructure.dataBaseContents,
     mainContentIndex:state.uIState.uiStructure.mainContentIndex,
-    menuOpen:state.uIState.uiStructure.menuOpen,
+    justLanded:state.uIState.uiStructure.justLanded,
     showContact:state.uIState.uiStructure.showContact
   }
 }

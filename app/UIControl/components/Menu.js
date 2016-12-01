@@ -1,22 +1,29 @@
 import React, {Component} from 'react';
 import { Motion, StaggeredMotion, spring, TransitionMotion } from 'react-motion';
 import * as uiActions from '../actions/index';
-import Options from './presentation/Options';
 
+import {connect} from 'react-redux';
 import SplitView from './SplitView';
 
 class Menu extends Component{
   constructor(props){
     super(props);
-    this.willEnter=this.willEnter.bind(this);
-    this.willLeave=this.willLeave.bind(this);
     this.getDefaultStyles = this.getDefaultStyles.bind(this);
     this.getStyles =this.getStyles.bind(this);
     this.selectCategory = this.selectCategory.bind(this);
     this.selectStageIndex = this.selectStageIndex.bind(this);
+    this.hoverItem = this.hoverItem.bind(this);
+    this.stopHoverItem = this.stopHoverItem.bind(this);
 
   }
-
+    hoverItem(hoverID){
+      event.preventDefault();
+      return this.props.dispatch(uiActions.hoverChange(hoverID));
+    }
+    stopHoverItem(){
+      const hoverID = null;
+      return this.props.dispatch(uiActions.hoverChange(hoverID) );
+    }
     getDefaultStyles(){
       return this.props.categories.map(item=>{
         return {
@@ -28,36 +35,22 @@ class Menu extends Component{
       });
     }
     selectCategory(catIndex){
+      this.props.dispatch(uiActions.changeStageIndex(1))
       this.props.dispatch(uiActions.categorySelect(null))
-      this.props.dispatch(uiActions.changeStageIndex(null))
       this.props.dispatch(uiActions.selectContentItem(null))
       this.props.dispatch(uiActions.previewItem(0))
 
       setTimeout(
         () => {
           return this.props.dispatch(uiActions.categorySelect(catIndex))
-        }, 400);
+        }, 500);
 
     }
 
     selectStageIndex(stage){
-      console.log(stage, "stage")
       this.props.dispatch(uiActions.changeStageIndex(stage))
     }
 
-    willEnter() {
-    return {
-      height: 0,
-      opacity: 1,
-    };
-  }
-
-    willLeave() {
-      return {
-        height: spring(0),
-        opacity: spring(0),
-      };
-    }
     getStyles() {
        const {categories, categorySelected} = this.props;
        return categories.map((category, i) => {
@@ -74,19 +67,20 @@ class Menu extends Component{
 
 
   render(){
-    console.log('rerendered')
+
     const{
       changeCategory,
       categories,
       categorySelected,
       stageIndex,
-      animationToReset} = this.props;
+      animations} = this.props;
 
     return(
       <div style={{display:'flex', flexDirection:'column'}}>
         <Motion
+
           style={{
-            x: spring(categorySelected !=null ? 100 : 0, {stiffness: 480, damping: 20}),
+            x: spring(categorySelected !=null ? 100 : 0, {stiffness: 380, damping: 20}),
             o: spring(categorySelected !=null ? 0.3:1, {stiffness: 480, damping: 20})
           }}>
                 {({x, o}) =>
@@ -115,22 +109,33 @@ class Menu extends Component{
                         flex:'1',
                         border:'1px solid #fff',
                         color:'#fff',
-                        fontWeight:'200'}}>
+                        fontWeight:'200',
+
+                      transform:this.props.stageIndex==0 ?'translate3d(0, 200px, 0)':'',
+                      transition:'all 300ms ease-in-out'  }}>
 
                       {categories.map((item, index)=>{
                         return <div
+
+
                                   style={{
                                     display:'flex',
-                                    cursor:'pointer',
                                     flex:'1',
+                                    color:animations =='menu'+index && categorySelected!=index? uiActions.getColorCategory(index):'',
                                     justifyContent:'space-around',
-                                    opacity: categorySelected!=index? o:null,
+                                    opacity: categorySelected!=index? o:1,//4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15)
                                     borderBottom: categorySelected==index? '2px solid #fff':'',
                                     position:'relative'}}
                                     key={item+index}
                                     onClick={this.selectCategory.bind(null, index)}>
 
-                          <h3 style={{letterSpacing:"5px"}}>
+                          <h3
+                            onMouseLeave={this.hoverItem.bind( null, 'menu end')}
+                            onMouseEnter={this.hoverItem.bind( null, 'menu'+index)}
+                            style={{
+                              letterSpacing:"5px",
+                              textShadow:'0 1px 0 rgba(255, 255, 255, 0.4)',
+                              cursor:'pointer'}}>
                             {categories[index].toUpperCase()}
                           </h3>
                         </div>
@@ -138,7 +143,7 @@ class Menu extends Component{
 
                     </div>
 
-                    {this.props.stageIndex !=0 ?(<SplitView {...this.props}/>): null}
+                    {this.props.stageIndex !=0 && this.props.categorySelected != null ?(<SplitView {...this.props}/>): null}
                   </div>
 
                   }
@@ -149,4 +154,25 @@ class Menu extends Component{
   }
 }
 
-export default Menu;
+const mapStateToProps = (state)=>{
+
+  return{
+    animations: state.uIState.uiStructure.animations.hover,
+    stageIndex: state.uIState.uiStructure.stageIndex,
+    categories: state.uIState.uiStructure.categories,
+    categorySelected: state.uIState.uiStructure.categorySelected,
+    itemIndexSelected: state.uIState.uiStructure.itemIndexSelected,
+    previewIndex: state.uIState.uiStructure.previewIndex,
+    dataBaseContents:state.uIState.uiStructure.dataBaseContents,
+    mainContentIndex:state.uIState.uiStructure.mainContentIndex,
+    showContact:state.uIState.uiStructure.showContact
+  }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+
+  return{
+    dispatch
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

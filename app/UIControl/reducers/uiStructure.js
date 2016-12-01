@@ -176,14 +176,14 @@ previewContents: {
 
 const defaultState = {
   stages:[],
-  stageIndex:1,
-  categorySelected:1,
+  stageIndex:0,
+  categorySelected:null,
   previewIndex:null,
   itemIndexSelected:null,
-  mainContentIndex:0,
+  // mainContentIndex:null,
   categories:[ 'blogs', 'demos', 'projects','about me'],
-  menuOpen:true,
-  showContact:false,
+  justLanded: true,
+  showContact:true,
   navReduce:false,
   animations:{
     hover:null,
@@ -202,8 +202,8 @@ export default function uiStructure(state = defaultState, action){
 
       return {...state, previewIndex:action.payload};
 
-    case 'SELECT_MAIN_CONTENT_INDEX':
-      return {...state, mainContentIndex:action.payload};
+    // case 'SELECT_MAIN_CONTENT_INDEX':
+    //   return {...state, mainContentIndex:action.payload};
 
     case "CONTENT_ITEM_SELECT":
 
@@ -251,12 +251,12 @@ export default function uiStructure(state = defaultState, action){
     case "RESET_STAGES":
       return {...state, stages:[]};
 
-    case "OPEN_MENU":
+    case "NOT_JUST_LANDED":
 
-      return {...state, menuOpen: true};
+      return {...state, justLanded: false};
 
-    case "CLOSE_MENU":
-      return {...state, menuOpen:false};
+    case "JUST_LANDED":
+      return {...state, justLanded:true};
 
     case "SHOW_CONTACT":
 
