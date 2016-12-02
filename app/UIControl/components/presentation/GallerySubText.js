@@ -48,7 +48,7 @@ flexDirection:'column'
                 backgroundColor:'#333',
                 borderRadius:'3px',
                 fontSize:'1.2rem',
-                padding:'.05rem 1.75rem',
+                padding:'.45rem 1.75rem',
                 letterSpacing:'3px',
                 color:'#fff',
                 fontWeight:'200',
@@ -69,7 +69,7 @@ flexDirection:'column'
         borderRadius:'3px',
         fontSize:'1.2rem',
 
-        padding:'.05rem 1.75rem'}}
+        padding:'.45rem .75rem'}}
         onClick={()=>_handleClick(previewIndex)}
         type='button'
         value='Take A Look'/>

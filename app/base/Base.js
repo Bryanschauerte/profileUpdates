@@ -60,7 +60,8 @@ class Base extends React.Component{
             width:this.state.windowWidth *.95,
             height:this.state.windowHeight *.95,
             top: "2.5%",
-            left:'2.5%'
+            left:'2.5%',
+            overflow:'scroll'
           }}>
             <UIControl />
           </div>
