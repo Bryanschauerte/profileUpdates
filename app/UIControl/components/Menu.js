@@ -76,7 +76,7 @@ class Menu extends Component{
       animations} = this.props;
 
     return(
-      <div style={{display:'flex', flexDirection:'column'}}>
+      <div id ='menu' className='menuContain'>
         <Motion
 
           style={{
@@ -85,57 +85,39 @@ class Menu extends Component{
           }}>
                 {({x, o}) =>
 
-                <div
-                  style={{
-                    display:'flex',
-                    flex:1,
-                    flexDirection:'column',
-                    position:"relative"
-                  }}>
+                <div className= "menuInnerContain">
                     <div style={{
                       width:'100%',
                       height:x+'%',
                       position: 'absolute',
                       opacity:'.5',
-                      background: `${'linear-gradient('+uiActions.getColorCategory(categorySelected)+','+uiActions.getColorCategory(categorySelected, 'false')+')' }`
+                      background: `${'linear-gradient('+uiActions.getColorCategory(categorySelected)+','+uiActions.getColorCategory(categorySelected, 'false')+')' }`,
+                      backgroundColor:uiActions.getColorCategory(categorySelected)
                     }} ></div>
 
-                    <div
+                    <div className="menuBar"
                       style={{
-                        position:'relative',
-                        display:'flex',
-                        flexDirection:'row',
-                        alignContent: 'center',
-                        flex:'1',
-                        border:'1px solid #fff',
-                        color:'#fff',
-                        fontWeight:'200',
-
-                      transform:this.props.stageIndex==0 ?'translate3d(0, 200px, 0)':'',
-                      transition:'all 300ms ease-in-out'  }}>
+                        '-webkit-transform': this.props.stageIndex==0 ?'translate3d(0, 200px, 0)':'',
+                        '-ms-transform': this.props.stageIndex==0 ?'translate3d(0, 200px, 0)':'',
+                        transform:this.props.stageIndex==0 ?'translate3d(0, 200px, 0)':''  }}>
 
                       {categories.map((item, index)=>{
                         return <div
-
+                                  className='menuItemContain'
 
                                   style={{
-                                    display:'flex',
-                                    flex:'1',
                                     color:animations =='menu'+index && categorySelected!=index? uiActions.getColorCategory(index):'',
-                                    justifyContent:'space-around',
                                     opacity: categorySelected!=index? o:1,//4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15)
                                     borderBottom: categorySelected==index? '2px solid #fff':'',
-                                    position:'relative'}}
+                                    }}
                                     key={item+index}
                                     onClick={this.selectCategory.bind(null, index)}>
 
                           <h3
+                            className='menuText'
                             onMouseLeave={this.hoverItem.bind( null, 'menu end')}
                             onMouseEnter={this.hoverItem.bind( null, 'menu'+index)}
-                            style={{
-                              letterSpacing:"5px",
-                              textShadow:'0 1px 0 rgba(255, 255, 255, 0.4)',
-                              cursor:'pointer'}}>
+                            >
                             {categories[index].toUpperCase()}
                           </h3>
                         </div>

@@ -39,8 +39,8 @@ class Base extends React.Component{
 
       render(){
         let { children} = this.props;
-        const { pathname, search, hash } = window.location
-        const location = `${pathname}${search}${hash}`
+        // const { pathname, search, hash } = window.location
+        // const location = `${pathname}${search}${hash}`
         let windowWidth=this.state.windowWidth;
         let windowHeight = this.state.windowHeight;
 

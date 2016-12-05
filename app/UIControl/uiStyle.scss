@@ -1,0 +1,102 @@
+// viewcontainer
+
+#viewContainer {
+  .outerContainer{
+    position:absolute;
+    display:flex;
+    align-self: center;
+    height:95%;
+    width:100%;
+    justify-content:center;
+  }
+  .innerContainer{
+    display:flex;
+    flex-direction:column;
+    height: 95%;
+    width: 95%;
+  }
+  .menuSpace{
+    display: flex;
+    height: 4%;
+  }
+}
+#SplitView{
+  .outer{
+    display: flex;
+    flex:1;
+    position: relative;
+    flex-direction: row;
+  }
+  .displayContainer{
+    display:flex;
+    flex-grow:1;
+    flex-direction: column;
+  }
+}
+
+#menu{
+  .menuContain{
+    display: flex;
+    flex-direction: column;
+  }
+  .menuInnerContain{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    position: relative;
+
+  }
+  .menuBar{
+    position:relative;
+    display:flex;
+    flex-direction:row;
+    align-content: center;
+    flex:1;
+    border:1px solid #fff;
+    color:#fff;
+    font-weight:200;
+    transition: all 300ms ease-in-out;
+  }
+  .menuItemContain{
+    display: flex;
+    flex:1;
+    justify-content: space-around;
+    position: relative;
+
+  }
+  .menuText{
+    letter-spacing: 5px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+  }
+
+}
+#galleryMainContain{
+  .outerContainer{
+    display: flex;
+    flex:1;
+  }
+  .outterWrapperStyles{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    justify-content: center;
+    flex: 1;
+
+  }
+  .innerWrapperStyles{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+  .itemStyle{
+    display: flex;
+    flex: 1;
+    cursor: pointer;
+    color:#fff;
+    flex-direction: column;
+    align-items: center;
+
+  }
+}

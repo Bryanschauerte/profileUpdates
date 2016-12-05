@@ -183,7 +183,7 @@ const defaultState = {
   // mainContentIndex:null,
   categories:[ 'blogs', 'demos', 'projects','about me'],
   justLanded: true,
-  showContact:true,
+  showContact:false,
   navReduce:false,
   animations:{
     hover:null,

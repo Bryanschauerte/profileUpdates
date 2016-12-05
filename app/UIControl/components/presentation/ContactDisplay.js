@@ -136,7 +136,7 @@ class ContactDisplay extends Component {
                                   <img
                                     height='32px'
                                     width='32px'
-                                    src='../../../resources/linkedin.png'/>
+                                    src='/assets/smPics/linkedin.png'/>
                                 </div>
                               </a>
                               </div>
@@ -170,7 +170,7 @@ class ContactDisplay extends Component {
                                     <img
                                     height='32px'
                                     width='32px'
-                                    src='../../../resources/mail-envelope.png'/>
+                                    src='/assets/smPics/mail-envelope.png'/>
                                   </div>
                               </a>
                           </div>
@@ -202,7 +202,7 @@ class ContactDisplay extends Component {
                                     <img
                                       height='32px'
                                       width='32px'
-                                      src='../../../resources/github.png'/>
+                                      src='/assets/smPics/github.png'/>
                                   </div>
                                 </a>
                             </div>

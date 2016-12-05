@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { StaggeredMotion, spring } from 'react-motion';
 import GallerySubText from './presentation/GallerySubText';
-
+import prefixAll from 'inline-style-prefixer/static'
 class ContentGallery extends Component {
 
   shouldComponentUpdate(nextProps, nextState){
@@ -28,19 +28,10 @@ class ContentGallery extends Component {
 
 
       const outterWrapperStyles = {
-
-        display: 'flex',
-        justifyContent: 'center',
-        flexWrap:'wrap',
-        flexFlow: 'row',
-        flex:1,
         margin:'2% 0%'
       }
 
       const innerWrapperStyles = {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         flex:1
       }
 
@@ -53,12 +44,11 @@ class ContentGallery extends Component {
 
       return (
         <div
-          style={{
-            display:'flex',
-            flex:1
-          }}>
+          id='galleryMainContain'
+          className="outerContainer">
         <div
         key={Math.random()}
+        className='outterWrapperStyles'
         style={outterWrapperStyles}>
           <StaggeredMotion
             key={Math.random()}
@@ -94,25 +84,20 @@ class ContentGallery extends Component {
             })}>
 
             {interpolatingStyles =>
-              <div style={innerWrapperStyles}>
+              <div className='innerWrapperStyles'>
 
                 {interpolatingStyles.map((style, i) => {
 
-                  const productStyles = {
-                    display:'flex',
-                    color:'#fff',
-                    cursor:'pointer',
-                    flex:1,
+                  const productStyles = prefixAll({
+
                     // order: i == activeIndex? -1: i,
                     WebkitTransform: `translate3d(0, ${style.y}px, 0) scale(${style.s})`,
                     opacity: style.o,
-                    flexGrow:style.f,
-                    flexDirection:'column',
-                    alignItems:'center'
-                  }
+                    flexGrow:style.f
+                  })
 
                   return <div
-
+                            className='itemStyle'
                             onClick={()=>this.props._handleClick(i)}
                             key={this.props.contentsArray[i].title+ Math.random()}
                             style={productStyles}>
@@ -120,24 +105,24 @@ class ContentGallery extends Component {
                             <h1>{this.props.contentsArray[i].title}</h1>
                               <div
 
-                                style={{
+                                style={prefixAll({
                                   backgroundImage:'url('+this.props.contentsArray[i].previewContents.imageArrayPreview+ ')',
                                   height:window.innerHeight/4.5 +'px',
                                   width: "100%",
                                   backgroundRepeat: 'no-repeat',
                                   backgroundSize:'contain',
                                   backgroundPosition: 'center center'
-                                }}>
+                                })}>
 
                               </div>
-                            { activeIndex==i? <div style={{
+                            { activeIndex==i? <div style={prefixAll({
                               display:'flex',
                               color:'#fff',
                               flexDirection:'column',
                               flex:'1'
 
 
-                            }}>
+                            })}>
                           {this.props.children}
 
                               </div>:null}

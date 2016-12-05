@@ -32,24 +32,10 @@ class ViewContainer extends Component{
   render(){
 
     return(
-        <div style={{
-        position:'absolute',
-        display:'flex',
-        alignSelf: 'center',
-        height:"95%",
-        width:"100%",
-        justifyContent:'center'}}>
-        <div style={{
+        <div id='viewContainer' className='outerContainer' >
+        <div className='innerContainer'>
+          <div class="menuSpace" >
 
-        display:'flex',
-        flexDirection:'column',
-        height:"95%",
-        width:"95%"}}>
-          <div style={{display:'flex', height:"4%"}}>
-            {/* <Navigation
-              uiActions= {uiActions}
-              delayDispatch={this.delayDispatch}
-              {...this.props}/> */}
           </div>
 
             <Menu delayDispatch={this.delayDispatch} {...this.props}/>

@@ -41,14 +41,8 @@ class SplitView extends Component{
 
 
 
-                    <div
-                      style={{
-                        position:'relative',
-                        display:'flex',
-                        flexDirection:'row',
-                        height:x+'%',
-
-                        flex:'1'}}>
+                    <div id='SplitView' className="outer"
+                      style={{height:x+'%'}}>
 
                         {this.props.itemIndexSelected==null  && this.props.categorySelected != null?
                           <ContentGallery
@@ -68,7 +62,7 @@ class SplitView extends Component{
                             :null}
 
                         {this.props.itemIndexSelected!=null?
-                        <div style={{display:'flex', flexGrow:1,flexDirection:'column'}}>
+                        <div className="displayContainer" >
 
 
 
