@@ -179,17 +179,16 @@ const defaultState = {
   stageIndex:0,
   categorySelected:null,
   previewIndex:null,
-  itemIndexSelected:null,
-  // mainContentIndex:null,
-  categories:[ 'blogs', 'demos', 'projects','about me'],
+  catItemSelectedIndex:null,
+  itemsForView:[],
+  categories:[ 'about me', 'blogs', 'demos', 'projects', 'other', 'everything'],
   justLanded: true,
   showContact:false,
   navReduce:false,
   animations:{
     hover:null,
     rotate:null
-  },
-  dataBaseContents: dummy
+  }
 }
 
 export default function uiStructure(state = defaultState, action){
@@ -197,6 +196,9 @@ export default function uiStructure(state = defaultState, action){
     case "CHANGE_STAGE":
 
       return {...state, stageIndex:action.payload};
+    case "CHANGE_CATEGORY_ITEMS":
+
+      return {...state, itemsForView:action.payload};
 
     case "CONTENT_ITEM_PREVIEW":
 
@@ -207,11 +209,11 @@ export default function uiStructure(state = defaultState, action){
 
     case "CONTENT_ITEM_SELECT":
 
-      return {...state, itemIndexSelected:action.payload};
+      return {...state, catItemSelectedIndex:action.payload};
 
     case "CONTENT_ITEM_RESET":
 
-      return {...state, itemIndexSelected:null};
+      return {...state, catItemSelectedIndex:null};
 
     case "CATEGORY_SELECT":
 

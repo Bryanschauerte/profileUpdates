@@ -1,13 +1,12 @@
-export function requestData(){
+export function requestProfileData(){
   return {
-    type:'REQUEST_DATA'
+    type:'REQUEST_PROFILE_DATA'
   }
 }
-export function receivedData(data){
+export function receivedProfileData(profileItems){
   return {
-    type: 'RECEIVE_DATA',
-    data: data,
-    receivedAt: Date.now()
+    type: 'RECEIVE_PROFILE_DATA',
+    payload: profileItems
   }
 }
 

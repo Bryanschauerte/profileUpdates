@@ -35,17 +35,13 @@ class ContactDisplay extends Component {
 
       render(){
 
-        return (<div style={{
-          height:'100%',
-          width:'100%',
-          position:'absolute'}}>
+        return (<div id="contactDisplay"
+          className='contentdispayContainer'
+          onMouseLeave={this.hoverItem.bind(null, 'contact none')} >
+
           <div
-            style={{
-              height:'100%',
-            width:'100%',
-            position:'absolute',
-            backgroundColor:'#000',
-            opacity:'.7'}}></div>
+            className = 'contentDisCurtain'
+            onMouseLeave={this.hoverItem.bind(null, 'contact none')}></div>
 
 
 
@@ -66,73 +62,35 @@ class ContactDisplay extends Component {
 
 
 
-                                  {({ e,l,h}) =><div style={{
-
-                                    display:"flex",
-                                    flexDirection:'column',
-                                    flex:1,
-                                    justifyContent:'center',
-                                    position:'relative',
-                                    height:'100%'
-
-                                  }} >
-                                  <div
+                                  {({ e,l,h}) =><div className='motionCont' >
+                                  <div className='motionInnerC'
                                     style={{
-                                      position:'fixed',
-                                      color:this.props.animations == 'contactMeClose'?'red':'#fff',
-                                      display:"flex",
-                                      right:'4%',
-                                      top:'5%',
-                                      backgroundColor:'#000',
-                                      border:'1px solid #fff',
-                                      borderRadius:'5px',
-                                      letterSpacing:'4px',
-                                      justifyContent:'flex-end',
-                                      cursor:'pointer'
-                                  }}
+                                      color:this.props.animations == 'contactMeClose'?'red':'#fff'
+                                    }}
                                   onMouseEnter={this.hoverItem.bind(null, 'contactMeClose')}
                                   onMouseLeave={this.hoverItem.bind(null, 'contact none')}
                                     onClick={()=>this.hideContact()}
                                     >
                                     <h3>CLOSE</h3>
                                   </div>
-                                  <h1 style={{color:'#eee', justifyContent:'center', display:'flex',marginBottom:'5%'}}>My Contact Info</h1>
+                                  <h1 className='text'>My Contact Info</h1>
                           <div
-
-                            style={{
-                            opacity:'1',
-                            display:'flex',
-                            justifyContents:'space-between',
-                            flexDirection:'row',
-                            height:'20%',
-                            padding:'2%'
-                          }}>
+                            className='contactContainer'>
 
                             <div
                               onMouseEnter={this.hoverItem.bind(null, 'contactMelinkedin')}
                               onMouseLeave={this.hoverItem.bind(null, 'contact none')}
+                              className='contentCont'
                               style={{
-                              display:'flex',
-                              flex:1,
-                              backgroundColor:'#062f4f',
                               border:l+'px solid #fff'
                             }}><div
-                              style={{
-
-                                display:'flex',
-                                alignItems:'center',
-                                flex:1,
-                                justifyContent:'center'
-                              }}>
+                                className='linkImgContain'>
                             <a
-                              style={{textDecoration:'none',color:'#fff', letterSpacing:'5px'}}
+                              className='link'
                               href="https://www.linkedin.com/in/bryanschauerte"
                               target="_blank">
                                 <h1>LinkedIn</h1>
-                                <div style={{
-                                  display:'flex',
-                                  justifyContent:'center',
-                                  cursor:'pointer'}}>
+                                <div className='imgCont' >
                                   <img
                                     height='32px'
                                     width='32px'
@@ -145,28 +103,19 @@ class ContactDisplay extends Component {
                             <div
                               onMouseEnter={this.hoverItem.bind(null, 'contactMeEmail')}
                               onMouseLeave={this.hoverItem.bind(null, 'contact none')}
+                              className='contentCont'
                               style={{
-                              display:'flex',
-                              flex:1,
                               backgroundColor:'#0193b8',
                               border:e+'px solid #fff'
                             }}>
                             <div
-                              style={{
-
-                                display:'flex',
-                                alignItems:'center',
-                                flex:1,
-                                justifyContent:'center'}}>
+                              className='linkImgContain'>
                               <a
-                                style={{textDecoration:'none',color:'#fff', letterSpacing:'5px'}}
+                                className='link'
                                 href="mailto:bryan.schauerte@gmail.com?Subject=Hey%20Bryan%20nice%20site"
                                 target="_top">
                                   <h1>Email</h1>
-                                  <div style={{
-                                    display:'flex',
-                                    justifyContent:'center',
-                                    cursor:'pointer'}}>
+                                  <div className='imgCont' >
                                     <img
                                     height='32px'
                                     width='32px'
@@ -178,27 +127,16 @@ class ContactDisplay extends Component {
                             <div
                               onMouseEnter={this.hoverItem.bind(null, 'contactMeHub')}
                               onMouseLeave={this.hoverItem.bind(null, 'contact none')}
+                              className='contentCont'
                               style={{
-                              display:'flex',
-                              flex:1,
                               backgroundColor:'#813772',
                               border:h+'px solid #fff'
                             }}>
-                            <div
-                              style={{
-
-                                display:'flex',
-                                alignItems:'center',
-                                flex:1,
-                                justifyContent:'center'
-                              }}>
-                                <a style={{textDecoration:'none',color:'#fff', letterSpacing:'5px'}}
+                            <div className='linkImgContain'>
+                                <a className='link'
                                    href='https://github.com/Bryanschauerte' target="_blank">
                                   <h1>Github</h1>
-                                  <div style={{
-                                    display:'flex',
-                                    justifyContent:'center',
-                                    cursor:'pointer'}}>
+                                  <div className='imgCont' >
                                     <img
                                       height='32px'
                                       width='32px'

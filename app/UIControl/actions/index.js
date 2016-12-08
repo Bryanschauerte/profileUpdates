@@ -109,3 +109,10 @@ export function resetStages(){
     type:'RESET_STAGES'
   }
 }
+
+export function changeCategoryItems(itemsArr) {
+  return {
+    type:'CHANGE_CATEGORY_ITEMS',
+    payload: itemsArr
+  }
+}

@@ -3,7 +3,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import SvgGenerator from '../svgGenerator/SvgGenerator'
 import UIControl from '../UIControl/UIControl';
-import Axios from 'axios';
+import axios from 'axios';
+import * as restActions from '../apiHandling/actions';
+
+
+
 
 class Base extends React.Component{
   constructor(props){
@@ -13,10 +17,25 @@ class Base extends React.Component{
       windowHeight: null
     }
     this._handleResize = this._handleResize.bind(this);
-
+    this.requestProfileData = this.requestProfileData.bind(this);
 
     }
+      requestProfileData(){
 
+        this.props.dispatch(restActions.requestProfileData());
+
+        axios.get('/getContents/profile')
+            .then( (response)=> {
+                let contents = response.data;
+                this.props.dispatch(restActions.receivedProfileData(contents));
+                console.log(contents, 'contents');
+              })
+              .catch(function (error) {
+                this.props.dispatch(restActions.receivedError(error));
+                console.log(error, 'error');
+              });
+
+      }
       _handleResize(e){
           this.setState({
             windowWidth: window.innerWidth,
@@ -29,7 +48,8 @@ class Base extends React.Component{
 
 
         window.addEventListener('resize', this._handleResize);
-        this._handleResize()
+        this.requestProfileData();
+        this._handleResize();
 
       }
       componentWillUnmount(){
@@ -74,10 +94,9 @@ class Base extends React.Component{
 
 
     const mapStateToProps = (state) => {
-
+console.log(state, 'Base')
         return {
-          activeIndex: state.horizontalPView.index,
-          productArray: state.horizontalPView.productArray,
+
           categorySelected: state.uIState.uiStructure.categorySelected
         }
     }

@@ -1,37 +1,38 @@
 import React, {Component} from 'react';
 import * as uiActions from '../actions/index';
 import { Motion, StaggeredMotion, spring } from 'react-motion';
-import DisplayContain from './presentation/DisplayContain';
-import GallerySubText from './presentation/GallerySubText';
+import DetailsPage from './presentation/DetailsPage';
+// import GallerySubText from './presentation/GallerySubText';
 import ContentGallery from './ContentGallery';
+import Display from './presentation/Display.js';
 
 class SplitView extends Component{
   constructor(props){
     super(props);
-    this.previewGalleryItem = this.previewGalleryItem.bind(this);
-    this.selectItemToView = this.selectItemToView.bind(this);
+    // this.previewGalleryItem = this.previewGalleryItem.bind(this);
+    // this.selectItemToView = this.selectItemToView.bind(this);
 
   }
-
-
-  previewGalleryItem(i){
-
-    this.props.dispatch(uiActions.previewItem(i));
-  }
-  selectItemToView(i){
-
-    this.props.dispatch(uiActions.selectContentItem(i));
-  }
+  //
+  //
+  // previewGalleryItem(i){
+  //
+  //   this.props.dispatch(uiActions.previewItem(i));
+  // }
+  // selectItemToView(i){
+  //
+  //   this.props.dispatch(uiActions.selectContentItem(i));
+  // }
 
   render(){
 
 
     const{
+      itemsForView,
       changeCategory,
       categories,
       categorySelected,
-      stageIndex,
-      animationToReset} = this.props;
+      stageIndex} = this.props;
 
     return(<Motion
           style={{
@@ -44,31 +45,21 @@ class SplitView extends Component{
                     <div id='SplitView' className="outer"
                       style={{height:x+'%'}}>
 
-                        {this.props.itemIndexSelected==null  && this.props.categorySelected != null?
+                        {
+                          this.props.catItemSelectedIndex==null  && this.props.categorySelected != null?
                           <ContentGallery
-                            _handleClick={this.previewGalleryItem}
-                            activeIndex={this.props.previewIndex}
-                            contentsArray={this.props.dataBaseContents}>
+                            previewHandler={this.props.previewHandler}
+                            selectContentItem={this.props.selectContentItem}
+                            viewItems={this.props.itemsForView}
+                          {...this.props}/>
 
-                              <GallerySubText
-                                _handleClick={this.selectItemToView}
-                                previewIndex={this.props.previewIndex}
-                                contentsArray={this.props.dataBaseContents}
+                            :null
+                          }
 
-                              />
-
-
-                            </ContentGallery>
-                            :null}
-
-                        {this.props.itemIndexSelected!=null?
+                        {this.props.catItemSelectedIndex!=null?
                         <div className="displayContainer" >
-
-
-
-                            {this.props.dataBaseContents[this.props.itemIndexSelected].main.map((item, index)=>{
-                              return <DisplayContain key ={Math.random()}
-                                contents={item} {...this.props}/>
+                            {this.props.itemsForView[this.props.catItemSelectedIndex].contentItems.main.map((item, index)=>{
+                              return<Display contents={item} key ={Math.random()} {...this.props}/> //<DetailsPage key ={Math.random()} contents={item} {...this.props}/>
                             })
                           }
                         </div>:null}

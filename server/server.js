@@ -1,31 +1,30 @@
 
 import express from 'express';
 import browserify from 'browserify-middleware';
-// var express = require('express');
-var fs = require('fs');
 
-var React = require('react');
+const fs = require('fs');
+const React = require('react');
 
-var app = express();
-// require('node-jsx').install({harmony: true})
+
+
 import {renderToString, renderToStaticMarkup} from 'react-dom/server'
 import {createPage, template} from './template';
-var path = require('path');
-var PORT = process.env.PORT || 8080;
-var bodyParser =require('body-parser');
-var cors = require('cors');
-var jwt = require('jsonwebtoken');
-var session = require('cookie-session');
-var expressJWT = require('express-jwt');
-var compression = require('compression');
-var helmet = require('helmet');
-var mongoLABSURLINFO = require('./keys/hidden.js');
+const path = require('path');
+const PORT = process.env.PORT || 8080;
+const bodyParser =require('body-parser');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const session = require('cookie-session');
+const expressJWT = require('express-jwt');
+const compression = require('compression');
+const helmet = require('helmet');
+const mongoLABSURLINFO = require('./keys/hidden.js');
 import Root from '../app/Root';
 
 
 import users from './keys/users';
 import secret from './keys/secret';
-
+const app = express();
 
 
 //browserify.settings.mode = 'production'; //uncomment to disable source watching and enable minification
@@ -39,7 +38,7 @@ browserify.settings({transform: ['babelify']});
 // }));
 
 
-var app = express();
+
 app.use(compression());
 app.use(helmet());
 app.use(helmet.xssFilter());
@@ -91,10 +90,10 @@ app.get('*', (req, res) => {
 
 // checklist
 // Set NODE_ENV to “production”
-// Ensure your app automatically restarts
-// Run your app in a cluster
-// Cache request results
-// Use a load balancer
+// Ensure your app automatically restarts: pm2
+// Run your app in a cluster:
+// Cache request results: reddis
+// Use a load balancer:
 // Use a reverse proxy
 
 

@@ -4,8 +4,9 @@ import CodePenHandler from './CodePenHandler';
 import ImageSlider from './ImageSlider';
 
 const Display = (props)=>{
+  console.log(props, "props")
   const {contents} = props;
-
+console.log(contents, "contents")
     function _handleStringForUrl(string, index='all'){
 
       let arr = string.split(', ');
@@ -22,7 +23,7 @@ const Display = (props)=>{
       }
 
       const searchTarget = /(##)/g;
-      const stringTolinkArray = this._handleStringForUrl(linkArray);
+      const stringTolinkArray = _handleStringForUrl(linkArray);
       let num =0;
       let indexOfArr = 0;
       let linkedString = string.replace(searchTarget, ()=>{

@@ -35,14 +35,7 @@ class Header extends Component {
 
       render(){
 
-        return (<div
-
-          style={{
-          display:'flex',
-          width:'100%',
-          height:'7%',
-          flexDirection:'row'
-        }}>
+        return (<div  id ='Header'>
         <div>
           <Motion
             defaultStyle={{
@@ -56,30 +49,19 @@ class Header extends Component {
 
 
 
-                  {({ fontSpace }) =><div style={{
-
-                    display:"flex",
-                    flexDirection:'row',
-                    flex:1,
-                    justifyContent:'flex-start'
-
-                  }} >
+                  {({ fontSpace }) =><div className='container' >
 
                     <div
-
+                      className="textContain"
                       style={{
-                        display:'flex',
-                        letterSpacing:fontSpace+'px',
-                        color:'#e5e5e5',
-                        height:'7%'
+                        letterSpacing:fontSpace+'px'
                         }}>
                         <h1
                           onMouseLeave={this.stopHoverItem}
-                          onMouseEnter={this.hoverItem.bind(null, 'header')}
-
-                          style={{
-                            margin:0
-                          }}>Bryan Schauerte</h1></div>
+                          onMouseEnter={this.hoverItem.bind(null, 'header')}>
+                            Bryan Schauerte
+                          </h1>
+                        </div>
 
 
                 </div>

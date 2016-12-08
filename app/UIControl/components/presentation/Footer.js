@@ -37,26 +37,9 @@ class Footer extends Component {
 
       render(){
 
-        return (<div
-          onClick={this.showContact}
-
-          style={{
-            cursor:'pointer',
-          display:'flex',
-          justifyContent:'center',
-          width:'100%',
-          height:'20%',
-          flexDirection:'column'
-        }}>
-          <ul
-
-                   style={{
-                          opacity:1,
-                          listStyle:'none',
-                          margin:'0',
-                          padding:'0'
-
-                        }}>
+        return (<div id='footer'
+          onClick={this.showContact}>
+          <ul className='list'>
 
 
                 <Motion
@@ -74,16 +57,10 @@ class Footer extends Component {
 
 
 
-                        {({ fontSize, fontSpace, r}) =><div style={{
-
-                          display:"flex",
-                          flexDirection:'row',
-                          flex:1,
-                          justifyContent:'center'
-
-                        }} >
+                        {({ fontSize, fontSpace, r}) =><div className='listContainer' >
 
                         <li
+                          className='listItem'
                           onMouseEnter={this.hoverItem.bind(null, 'footer')}
                           onMouseLeave={this.stopHoverItem}
                           style={{
@@ -99,8 +76,8 @@ class Footer extends Component {
                           position:'relative',
                           borderRadius:'2em'
                         }}>
-                        <h4 style={{textAlign:'center', opacity:'1', color:'#eee'}}>CONTACT</h4>
-                        <div style={{position:'absolute', height:'100%', width:'100%', borderRadius:'2em', overflow:'hidden'}}>
+                        <h4 className='contact' >CONTACT</h4>
+                        <div className='anaContain' >
                           <svg key ={Math.random()} id="TopSVGCirles" height="100%" width="100%">
                             <circle key ={Math.random()} cx='50%' cy='50%' r={r+'%'} fillOpacity='.5' fill={'#000'} />
                             {/* <text x="0%" y="50%"  stroke="none" fill="#242424"  opacity=".4" fontSize="127px" fontFamily="Garamond"><tspan dy="0%">{this.props.displayItem}</tspan></text> */}

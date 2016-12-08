@@ -1,11 +1,14 @@
 import React, {Component, PropTypes} from 'react';
 import { StaggeredMotion, spring } from 'react-motion';
-import GallerySubText from './presentation/GallerySubText';
-import prefixAll from 'inline-style-prefixer/static'
-class ContentGallery extends Component {
 
+import prefixAll from 'inline-style-prefixer/static';
+
+class ContentGallery extends Component {
+  constructor(props){
+    super(props);
+  }
   shouldComponentUpdate(nextProps, nextState){
-    if(nextProps.activeIndex != this.props.activeIndex){
+    if(nextProps.previewIndex != this.props.previewIndex){
       return true;
     }
     return false
@@ -22,24 +25,15 @@ class ContentGallery extends Component {
         initialDamping,
         finalStiffness,
         finalDamping,
-        activeIndex
+        previewIndex
 
       } = this.props;
 
-
-      const outterWrapperStyles = {
-        margin:'2% 0%'
-      }
-
-      const innerWrapperStyles = {
-        flex:1
-      }
-
       const defaultStyleObj = { x: startX, y: startY, o: 1, f:1, s: scaleHeight }
-      const specialStyleObj = { x: startX, y: startY, o: 1, f:2, s: scaleHeightFinal}
+      const specialStyleObj = { x: startX, y: startY, o: 1, f:3, s: scaleHeightFinal}
 
-      const itemStyleArr = this.props.contentsArray.map( (item, index) =>  {
-        return index == this.props.activeIndex?  specialStyleObj: defaultStyleObj
+      const itemStyleArr = this.props.itemsForView.map( (item, index) =>  {
+        return index == this.props.previewIndex?  specialStyleObj: defaultStyleObj
       })
 
       return (
@@ -48,20 +42,19 @@ class ContentGallery extends Component {
           className="outerContainer">
         <div
         key={Math.random()}
-        className='outterWrapperStyles'
-        style={outterWrapperStyles}>
+        className='outterWrapperStyles'>
           <StaggeredMotion
             key={Math.random()}
             defaultStyles={itemStyleArr}
             styles={
               prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
 
-              if(i == this.props.activeIndex){
+              if(i == this.props.previewIndex){
 
                 return {
                   y: spring(0, { stiffness: initialStiffness, damping: initialDamping }),
                   o: spring(1),
-                  f: spring(2),
+                  f: spring(3),
                   s: spring(1)
                 }
               }else{
@@ -90,7 +83,7 @@ class ContentGallery extends Component {
 
                   const productStyles = prefixAll({
 
-                    // order: i == activeIndex? -1: i,
+                    // order: i == previewIndex? -1: i,
                     WebkitTransform: `translate3d(0, ${style.y}px, 0) scale(${style.s})`,
                     opacity: style.o,
                     flexGrow:style.f
@@ -98,15 +91,15 @@ class ContentGallery extends Component {
 
                   return <div
                             className='itemStyle'
-                            onClick={()=>this.props._handleClick(i)}
-                            key={this.props.contentsArray[i].title+ Math.random()}
+                            onClick={()=>this.props.previewHandler(i)}
+                            key={this.props.itemsForView[i].contentItems.previewContents.previewTitle+ Math.random()}
                             style={productStyles}>
 
-                            <h1>{this.props.contentsArray[i].title}</h1>
+                            <h1>{this.props.itemsForView[i].contentItems.previewContents.previewTitle}</h1>
                               <div
 
                                 style={prefixAll({
-                                  backgroundImage:'url('+this.props.contentsArray[i].previewContents.imageArrayPreview+ ')',
+                                  backgroundImage:'url('+this.props.itemsForView[i].contentItems.previewContents.imageArrayPreview+ ')',
                                   height:window.innerHeight/4.5 +'px',
                                   width: "100%",
                                   backgroundRepeat: 'no-repeat',
@@ -115,7 +108,7 @@ class ContentGallery extends Component {
                                 })}>
 
                               </div>
-                            { activeIndex==i? <div style={prefixAll({
+                            { this.props.previewIndex==i? <div style={prefixAll({
                               display:'flex',
                               color:'#fff',
                               flexDirection:'column',
@@ -123,7 +116,26 @@ class ContentGallery extends Component {
 
 
                             })}>
-                          {this.props.children}
+
+                            <div id='GallerySubText' >
+
+        <p>{this.props.itemsForView[this.props.previewIndex].contentItems.previewContents.previewHeader}</p>
+
+        <ul>
+        <li className='header'>Contents:</li>
+          {this.props.itemsForView[this.props.previewIndex].contentItems.main.map((item,index)=>{
+          if(item.subHeader || item.subheader){  return <li className='galleryItem'
+              key={item+index}> {item.subHeader || item.subheader}</li>}
+          })}
+        </ul>
+         {/* <p>{this.props.itemsForView[index].contentItems.previewContents.previewFooter}</p> */}
+
+      <input
+        onClick={()=>this.props.selectContentItem(this.props.previewIndex)}
+        type='button'
+        value='Take A Look'/>
+          </div>
+
 
                               </div>:null}
                             </div>
@@ -139,7 +151,7 @@ class ContentGallery extends Component {
 
   }
   ContentGallery.propTypes={
-    contentsArray:PropTypes.array
+    itemsForView:PropTypes.array
   }
   ContentGallery.defaultProps= {
     startY:1,

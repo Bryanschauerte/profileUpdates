@@ -2469,7 +2469,7 @@ System.config({
   },
 
   map: {
-    "axios": "npm:axios@0.15.2",
+    "axios": "npm:axios@0.15.3",
     "babel": "npm:babel-core@5.8.38",
     "babel-plugin-react-autoprefix": "npm:babel-plugin-react-autoprefix@1.0.1",
     "babel-plugin-transform-decorators-legacy": "npm:babel-plugin-transform-decorators-legacy@1.3.4",
@@ -2652,9 +2652,9 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
-    "npm:axios@0.15.2": {
+    "npm:axios@0.15.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "follow-redirects": "npm:follow-redirects@0.0.7",
+      "follow-redirects": "npm:follow-redirects@1.0.0",
       "https": "github:jspm/nodelibs-https@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2",
@@ -3096,13 +3096,12 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "unpipe": "npm:unpipe@1.0.0"
     },
-    "npm:follow-redirects@0.0.7": {
+    "npm:follow-redirects@1.0.0": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
-      "debug": "npm:debug@2.2.0",
+      "debug": "npm:debug@2.3.2",
       "http": "github:jspm/nodelibs-http@1.7.1",
       "https": "github:jspm/nodelibs-https@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "stream-consume": "npm:stream-consume@0.1.0",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
       "url": "github:jspm/nodelibs-url@0.1.0"
     },
     "npm:formidable@1.0.9": {

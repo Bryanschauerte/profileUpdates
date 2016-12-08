@@ -1,10 +1,11 @@
 import {combineReducers} from 'redux';
 
-import horizontalPView from '../horizontalProductView/reducers/index.js';
+
 import uIState from '../UIControl/reducers/root';
+import siteInfo from '../apiHandling/reducer';
 
 export default combineReducers({
-  horizontalPView,
-  uIState
+
+  uIState, siteInfo
 
 })
