@@ -67,7 +67,7 @@ class Base extends React.Component{
 
 
 
-        return( <div style= {{
+        return( <div id='Base' style= {{
           position:'absolute',
           width:this.state.windowWidth,
           height:this.state.windowHeight
@@ -94,7 +94,7 @@ class Base extends React.Component{
 
 
     const mapStateToProps = (state) => {
-console.log(state, 'Base')
+
         return {
 
           categorySelected: state.uIState.uiStructure.categorySelected

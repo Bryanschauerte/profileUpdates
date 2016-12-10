@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import { Motion, StaggeredMotion, spring, TransitionMotion } from 'react-motion';
 import * as uiActions from '../actions/index';
 
@@ -16,15 +16,15 @@ class Menu extends Component{
     this.stopHoverItem = this.stopHoverItem.bind(this);
     this.getCategories = this.getCategories.bind(this);
     this.getCategoryItems = this.getCategoryItems.bind(this);
-    this.previewItem = this.previewItem.bind(this);
-    this.selectContentItem = this.selectContentItem.bind(this);
+    this._previewItem = this._previewItem.bind(this);
+    this._selectContentItem = this._selectContentItem.bind(this);
 
   }
-  previewItem(i){
+  _previewItem(i){
 
     this.props.dispatch(uiActions.previewItem(i));//changes preview index
   }
-  selectContentItem(){
+  _selectContentItem(){
     const itemIndex = this.props.previewIndex;
     this.props.dispatch(uiActions.selectContentItem(itemIndex)); //changes the catItemSelectedIndex
   }
@@ -107,7 +107,11 @@ class Menu extends Component{
 
     const{
       changeCategory,
+      previewIndex,
+      catItemSelectedIndex,
       categorySelected,
+      showContact,
+      itemsForView,
       stageIndex,
       animations} = this.props;
 
@@ -133,9 +137,9 @@ class Menu extends Component{
 
                     <div className="menuBar"
                       style={{
-                        '-webkit-transform': this.props.stageIndex==0 ?'translate3d(0, 200px, 0)':'',
-                        '-ms-transform': this.props.stageIndex==0 ?'translate3d(0, 200px, 0)':'',
-                        transform:this.props.stageIndex==0 ?'translate3d(0, 200px, 0)':''  }}>
+                        '-webkit-transform': stageIndex==0 ?'translate3d(0, 200px, 0)':'',
+                        '-ms-transform': stageIndex==0 ?'translate3d(0, 200px, 0)':'',
+                        transform: stageIndex==0 ?'translate3d(0, 200px, 0)':''  }}>
 
                       {categoriesOb.categories.map((item, index)=>{
                         if(item){
@@ -165,13 +169,16 @@ class Menu extends Component{
                     </div>
 
                     {
-                      this.props.stageIndex !=0 &&
-                      this.props.categorySelected != null ?(
+                      stageIndex !=0 && categorySelected != null ?(
                         <SplitView
-                          displayItems={this.getCategoryItems()}
-                          {...this.props}
-                          previewHandler={this.previewItem}//index
-                          selectContentItem={this.selectContentItem}
+                          catItemSelectedIndex={catItemSelectedIndex}
+                          previewHandler={this._previewItem}
+                          selectContentItem={this._selectContentItem}
+                          showContact={showContact}
+                          itemsForView={itemsForView}
+                          categorySelected ={categorySelected}
+                          previewIndex = {previewIndex}
+
                         />
                       ): null
                     }
@@ -184,9 +191,18 @@ class Menu extends Component{
     )
   }
 }
-
+Menu.PropTypes ={
+  changeCategory: PropTypes.number,
+  previewIndex: PropTypes.number,
+  catItemSelectedIndex: PropTypes.number,
+  categorySelected:PropTypes.number,
+  showContact: PropTypes.bool,
+  itemsForView:PropTypes.array,
+  stageIndex:PropTypes.number,
+  animations:PropTypes.array
+}
 const mapStateToProps = (state)=>{
-  console.log(state, 'menu state')
+
   return{
 
     items:{

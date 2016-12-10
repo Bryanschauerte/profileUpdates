@@ -38,6 +38,7 @@ gulp.task('serve', ['styles'], function() {
 
     // directory to serve static content
     app.use('/', express.static(__dirname + '/'));
+    app.use('/assets', express.static(__dirname + '/server/assets'));
 
     // serve index.html on refresh
 
@@ -47,7 +48,7 @@ gulp.task('serve', ['styles'], function() {
   var db;
   MongoClient.connect(mongoLABSURLINFO, (err, database) => {
   db= database
-  console.log('connected', db)
+
   })
 
   function profileDefaultData(req, res){

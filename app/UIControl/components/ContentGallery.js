@@ -7,12 +7,7 @@ class ContentGallery extends Component {
   constructor(props){
     super(props);
   }
-  shouldComponentUpdate(nextProps, nextState){
-    if(nextProps.previewIndex != this.props.previewIndex){
-      return true;
-    }
-    return false
-  }
+
     render(){
 
       const {
@@ -24,8 +19,7 @@ class ContentGallery extends Component {
         initialStiffness,
         initialDamping,
         finalStiffness,
-        finalDamping,
-        previewIndex
+        finalDamping
 
       } = this.props;
 
@@ -91,7 +85,7 @@ class ContentGallery extends Component {
 
                   return <div
                             className='itemStyle'
-                            onClick={()=>this.props.previewHandler(i)}
+                            onClick={i!=this.props.previewIndex?()=>this.props.previewHandler(i):null}
                             key={this.props.itemsForView[i].contentItems.previewContents.previewTitle+ Math.random()}
                             style={productStyles}>
 
@@ -128,7 +122,7 @@ class ContentGallery extends Component {
               key={item+index}> {item.subHeader || item.subheader}</li>}
           })}
         </ul>
-         {/* <p>{this.props.itemsForView[index].contentItems.previewContents.previewFooter}</p> */}
+
 
       <input
         onClick={()=>this.props.selectContentItem(this.props.previewIndex)}

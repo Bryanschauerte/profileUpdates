@@ -4,37 +4,37 @@ import { Motion, StaggeredMotion, spring } from 'react-motion';
 import DetailsPage from './presentation/DetailsPage';
 // import GallerySubText from './presentation/GallerySubText';
 import ContentGallery from './ContentGallery';
-import Display from './presentation/Display.js';
+import WildCard from './presentation/WildCard.js';
 
 class SplitView extends Component{
   constructor(props){
     super(props);
-    // this.previewGalleryItem = this.previewGalleryItem.bind(this);
-    // this.selectItemToView = this.selectItemToView.bind(this);
-
   }
-  //
-  //
-  // previewGalleryItem(i){
-  //
-  //   this.props.dispatch(uiActions.previewItem(i));
-  // }
-  // selectItemToView(i){
-  //
-  //   this.props.dispatch(uiActions.selectContentItem(i));
-  // }
 
+  shouldComponentUpdate(nextProps, nextState){
+
+    if(nextProps.previewIndex != this.props.previewIndex){
+      return true;
+    }
+    if(nextProps.catItemSelectedIndex != this.props.catItemSelectedIndex){
+      return true;
+    }
+    return false
+  }
   render(){
 
 
     const{
+      catItemSelectedIndex,
+      previewHandler,
+      selectContentItem,
+      showContact,
       itemsForView,
-      changeCategory,
-      categories,
-      categorySelected,
-      stageIndex} = this.props;
+      categorySelected
+        } = this.props;
 
     return(<Motion
+      key={Math.random()}
           style={{
             x: spring(categorySelected !=null ? 100 : 0, {stiffness: 480, damping: 20})
           }}>
@@ -42,27 +42,36 @@ class SplitView extends Component{
 
 
 
-                    <div id='SplitView' className="outer"
-                      style={{height:x+'%'}}>
+                    <div
+                      key={Math.random()}
+                      id='SplitView'
+                      className="outer"
+                      style={{height:x+'%', opacity:1, zIndex:2, display: showContact? 'none':'flex'}}>
 
                         {
-                          this.props.catItemSelectedIndex==null  && this.props.categorySelected != null?
+                          catItemSelectedIndex==null ?
                           <ContentGallery
-                            previewHandler={this.props.previewHandler}
-                            selectContentItem={this.props.selectContentItem}
-                            viewItems={this.props.itemsForView}
-                          {...this.props}/>
+                            previewHandler={previewHandler}
+                            selectContentItem={selectContentItem}
+                            itemsForView={itemsForView}
+                            previewIndex={this.props.previewIndex}
+                          />
 
-                            :null
+                            :  <div className="wildcardContainer"  key={Math.random()}>
+                              <h1 className='wildcardTitle'>{itemsForView[catItemSelectedIndex].contentItems.title}</h1>
+                                  {
+                                    itemsForView[catItemSelectedIndex].contentItems.main.map((item, index)=>{
+
+                                      return<div>
+                                       <WildCard contents={item} key ={item._id} {...this.props}/>
+                                    </div>
+                                  })
+                                }
+                              </div>
                           }
 
-                        {this.props.catItemSelectedIndex!=null?
-                        <div className="displayContainer" >
-                            {this.props.itemsForView[this.props.catItemSelectedIndex].contentItems.main.map((item, index)=>{
-                              return<Display contents={item} key ={Math.random()} {...this.props}/> //<DetailsPage key ={Math.random()} contents={item} {...this.props}/>
-                            })
-                          }
-                        </div>:null}
+
+
 
                     </div>
 

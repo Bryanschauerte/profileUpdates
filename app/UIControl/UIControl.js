@@ -46,19 +46,14 @@ class UIControl extends Component{
 
     return(
 
-        <div style={{
-
-        display:'flex',
-        flexDirection:'column',
-        height:"100%",
-        width:"100%"}}>
+        <div id = 'Uicontrol' className= 'uiControlCont'>
 
 
             {this.props.justLanded? <Landing handleClick={this.handleLandingClick}/>:
             <div><Header />
-              <Menu/>
+              {this.props.showContact? <ContactDisplay hideContact={this.hideContact}/>:<Menu/>}
             <Footer /></div>}
-            {this.props.showContact? <ContactDisplay hideContact={this.hideContact}/>:null}
+
 
             </div>
 

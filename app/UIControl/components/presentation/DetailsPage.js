@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Display from './Display';
+import WildCard from './WildCard';
 
 
 const DetailsPage = ({categories, categorySelected, contents})=>{
@@ -12,7 +12,7 @@ console.log(contents, 'contents')
 
           <div className='innerContainer'>
 
-          {/* <Display key={Math.random()} contents={contents}/> */}
+          {/* <WildCard key={Math.random()} contents={contents}/> */}
           </div>
 
         </div>

@@ -107,30 +107,31 @@
   display: flex;
   height: 4%; }
 
-#SplitView .outer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  position: relative;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row; }
-
-#SplitView .displayContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
+#SplitView {
+  opacity: 1; }
+  #SplitView .outer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    position: relative;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row; }
+  #SplitView .displayContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
 
 #menu .menuContain {
   display: -webkit-box;
@@ -370,7 +371,8 @@
   -webkit-box-pack: row;
       -ms-flex-pack: row;
           justify-content: row;
-  list-style: none; }
+  list-style: none;
+  z-index: 10; }
   #contactMeBtn li {
     opacity: 1;
     color: #fff;
@@ -686,6 +688,81 @@
   #Landing .subHeader {
     text-decoration: none;
     letter-spacing: 3px; }
+
+.uiControlCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  width: 100%; }
+
+.WildCardContainer {
+  opacity: 1;
+  z-index: 2;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.wildcardTitle {
+  color: #fff;
+  background-color: #222222;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  letter-spacing: 5px; }
+
+.wildCardSolo {
+  padding: 1% 4%;
+  color: #fff; }
+  .wildCardSolo p a {
+    margin: 1px;
+    color: #FF4900; }
+  .wildCardSolo div.problemSolution {
+    color: #fff; }
+  .wildCardSolo .paragraph {
+    font-family: sans-serif;
+    text-indent: 3em;
+    text-align: left; }
+  .wildCardSolo .imageSliderContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .wildCardSolo .sliderImage {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
+    height: auto;
+    width: 50%; }
+  .wildCardSolo .sliderArrow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0% 10%; }
+  .wildCardSolo .videoClass {
+    display: block; }
 
 li {
   color: cornflowerblue;

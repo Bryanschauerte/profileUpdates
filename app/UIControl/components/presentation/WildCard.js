@@ -1,12 +1,13 @@
 import React from 'react';
 
-import CodePenHandler from './CodePenHandler';
-import ImageSlider from './ImageSlider';
+import CodePenHandler from './wildcardComponents/CodePenHandler';
+import ImageSlider from './wildcardComponents/ImageSlider';
+import GistAddition from './wildcardComponents/GistAddition';
 
-const Display = (props)=>{
-  console.log(props, "props")
+const WildCard = (props)=>{
+
   const {contents} = props;
-console.log(contents, "contents")
+
     function _handleStringForUrl(string, index='all'){
 
       let arr = string.split(', ');
@@ -43,12 +44,12 @@ console.log(contents, "contents")
     }
 
 
-return (<div>
+return (<div className='wildCardSolo'>
 
 
   {contents.subHeader?
     <div className="innerContents_headerContents">
-      <h1>{contents.subHeader}</h1>
+      <h3>{contents.subHeader}</h3>
     </div>: null}
 
   {contents.problem?<div className="problemSolution">
@@ -60,7 +61,7 @@ return (<div>
   </div>:null}
 
   {contents.subheader?
-    <div><h1>{contents.subheader}</h1></div>: null}
+    <div><h3>{contents.subheader}</h3></div>: null}
 
   {contents.contents?
   <div className='paragraph'>
@@ -72,7 +73,7 @@ return (<div>
 
   {contents.containsCodePen?<div>
     <CodePenHandler
-      style={{height:265, width:"100%"}}
+      style={{height:400, width:"100%"}}
       iframeSrc={
         _handleStringForUrl(contents.containsCodePen, 0)
       }
@@ -89,9 +90,10 @@ return (<div>
       {contents.containsMedia == 'video'?
         <div className="addSideMargin">
           <div className="paragraph">
-            <h1>{contents.mediaTitle}</h1>
+            <h3>{contents.mediaTitle}</h3>
           </div>
             <video
+              className='videoClass'
               src={contents.links}
               width= "100%"
               type="video/mp4"
@@ -101,9 +103,9 @@ return (<div>
 
         {contents.containsMedia == 'images'?<div>
           <div className="paragraph">
-            <h1>{contents.mediaTitle}</h1>
+            <h3>{contents.mediaTitle}</h3>
           </div>
-          <ImageSlider size ={{height: 'auto', width:'50%'}}
+          <ImageSlider
             images={
               _handleStringForUrl(contents.links)
             }/>
@@ -122,4 +124,4 @@ return (<div>
 
       )
     }
-export default Display;
+export default WildCard;

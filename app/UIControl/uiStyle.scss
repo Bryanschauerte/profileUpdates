@@ -21,6 +21,7 @@
   }
 }
 #SplitView{
+  opacity: 1;
   .outer{
     display: flex;
     flex:1;
@@ -186,6 +187,7 @@
   flex-direction: row;
   justify-content: row;
   list-style: none;
+  z-index: 10;
   li{
     opacity: 1;
     color: #fff;
@@ -425,4 +427,73 @@
     letter-spacing: 3px;
   }
 
+}
+#Uicontrol{
+  .outerContainer{
+
+  }
+}
+.uiControlCont{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.WildCardContainer{
+  opacity:1;
+  z-index: 2;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+
+}
+.wildcardTitle{
+color:#fff;
+background-color: #222222;
+text-align: center;
+margin-left: 10%;
+margin-right: 10%;
+letter-spacing: 5px;
+}
+.wildCardSolo{
+  padding: 1% 4%;
+  color: #fff;
+  p{
+    a{
+      margin:1px;
+      color:#FF4900;
+
+    }
+  }
+  div.problemSolution{
+    color:#fff;
+  }
+  .paragraph {
+    font-family: sans-serif;
+    text-indent: 3em;
+    text-align: left;
+  }
+  .imageSliderContainer{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+
+
+  }
+  .sliderImage{
+    display: flex;
+    flex:2;
+    height:auto;
+    width: 50%;
+
+  }
+  .sliderArrow{
+    display: flex;
+    flex:1;
+    align-items: center;
+    margin: 0% 10%;
+  }
+  .videoClass{
+    display: block;
+  }
 }
