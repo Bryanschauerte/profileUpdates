@@ -96,7 +96,7 @@ class ContentGallery extends Component {
 
                                 style={prefixAll({
                                   backgroundImage:'url('+this.props.itemsForView[i].contentItems.previewContents.imageArrayPreview+ ')',
-                                  height:window.innerHeight/4.5 +'px',
+                                  height:(isNaN(window.innerHeight) ? window.clientHeight : window.innerHeight)/4.5 +'px',
                                   width: "100%",
                                   backgroundRepeat: 'no-repeat',
                                   backgroundSize:'contain',

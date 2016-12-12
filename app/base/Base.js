@@ -13,8 +13,8 @@ class Base extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      windowWidth: null,
-      windowHeight: null
+      windowWidth: isNaN(window.innerWidth) ? window.clientWidth : window.innerWidth,
+      windowHeight: isNaN(window.innerHeight) ? window.clientHeight : window.innerHeight
     }
     this._handleResize = this._handleResize.bind(this);
     this.requestProfileData = this.requestProfileData.bind(this);
@@ -38,8 +38,8 @@ class Base extends React.Component{
       }
       _handleResize(e){
           this.setState({
-            windowWidth: window.innerWidth,
-            windowHeight: window.innerHeight
+            windowWidth: isNaN(window.innerWidth) ? window.clientWidth : window.innerWidth,
+            windowHeight: isNaN(window.innerHeight) ? window.clientHeight : window.innerHeight
            })
       }
 
