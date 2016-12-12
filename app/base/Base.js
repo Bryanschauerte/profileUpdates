@@ -5,7 +5,7 @@ import SvgGenerator from '../svgGenerator/SvgGenerator'
 import UIControl from '../UIControl/UIControl';
 import axios from 'axios';
 import * as restActions from '../apiHandling/actions';
-
+import * as uiActions from '../UIControl/actions/index';
 
 
 
@@ -61,20 +61,22 @@ class Base extends React.Component{
 
       render(){
         let { children} = this.props;
-        let windowWidth=this.state.windowWidth;
-        let windowHeight = this.state.windowHeight;
+      
 
 
 
 
-        return( <div id='Base' style= {{
+        return( <div
+          id='Base'
+          onClick={()=>this.props.dispatch(uiActions.notJustLanded())}
+          style= {{
           position:'absolute',
           width:this.state.windowWidth,
           height:this.state.windowHeight
         }}>  <SvgGenerator
-            windowHeight={windowHeight}
+            windowHeight={this.state.windowHeight}
             showBackgAni={this.props.categorySelected ==null}
-            windowWidth={windowWidth}/>
+            windowWidth={this.state.windowWidth}/>
           <div style={{
             position:'absolute',
             width:this.state.windowWidth *.95,
@@ -97,7 +99,8 @@ class Base extends React.Component{
 
         return {
 
-          categorySelected: state.uIState.uiStructure.categorySelected
+          categorySelected: state.uIState.uiStructure.categorySelected,
+          justLanded: state.uIState.uiStructure.justLanded
         }
     }
 
