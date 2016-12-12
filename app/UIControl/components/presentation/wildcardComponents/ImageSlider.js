@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames'
+
 
 class ImageSlider extends React.Component{
 constructor(props){
@@ -34,11 +34,7 @@ _changeLoadState(){
 
   render(){
 
-    let imageClass = classNames({
-      imageLoading: true,
-      imageDoneLoading: this.state.isLoaded
 
-    })
     return( <div className="imageSliderContainer" >
 
 

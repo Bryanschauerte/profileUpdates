@@ -2487,13 +2487,12 @@ System.config({
     "fs": "github:jspm/nodelibs-fs@0.1.2",
     "helmet": "npm:helmet@3.1.0",
     "inline-style-prefixer": "npm:inline-style-prefixer@2.0.5",
-    "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
     "jsonp": "npm:jsonp@0.2.0",
     "jsonwebtoken": "npm:jsonwebtoken@7.1.9",
     "mongodb": "npm:mongodb@2.2.12",
-    "react": "npm:react@15.4.0",
+    "react": "npm:react@15.4.1",
     "react-addons-css-transition-group": "npm:react-addons-css-transition-group@15.3.2",
-    "react-dom": "npm:react-dom@15.4.0",
+    "react-dom": "npm:react-dom@15.4.1",
     "react-motion": "npm:react-motion@0.4.5",
     "react-redux": "npm:react-redux@4.4.5",
     "react-router": "npm:react-router@2.3.0",
@@ -2501,8 +2500,6 @@ System.config({
     "redux": "npm:redux@3.6.0",
     "redux-devtools": "npm:redux-devtools@3.3.1",
     "redux-logger": "npm:redux-logger@2.6.1",
-    "redux-promise-middleware": "npm:redux-promise-middleware@4.1.0",
-    "redux-thunk": "npm:redux-thunk@2.0.1",
     "scss": "github:KevCJones/plugin-scss@0.2.10",
     "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@0.5.7",
     "uuid-token-generator": "npm:uuid-token-generator@0.5.0",
@@ -3451,20 +3448,20 @@ System.config({
       "unpipe": "npm:unpipe@1.0.0"
     },
     "npm:react-addons-css-transition-group@15.3.2": {
-      "react": "npm:react@15.4.0"
+      "react": "npm:react@15.4.1"
     },
-    "npm:react-dom@15.4.0": {
+    "npm:react-dom@15.4.1": {
       "fbjs": "npm:fbjs@0.8.6",
       "loose-envify": "npm:loose-envify@1.3.0",
       "object-assign": "npm:object-assign@4.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "react": "npm:react@15.4.0"
+      "react": "npm:react@15.4.1"
     },
     "npm:react-motion@0.4.5": {
       "performance-now": "npm:performance-now@0.2.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "raf": "npm:raf@3.3.0",
-      "react": "npm:react@15.4.0"
+      "react": "npm:react@15.4.1"
     },
     "npm:react-redux@4.4.5": {
       "hoist-non-react-statics": "npm:hoist-non-react-statics@1.2.0",
@@ -3472,7 +3469,7 @@ System.config({
       "lodash": "npm:lodash@4.17.2",
       "loose-envify": "npm:loose-envify@1.3.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "react": "npm:react@15.4.0",
+      "react": "npm:react@15.4.1",
       "redux": "npm:redux@3.6.0"
     },
     "npm:react-router@2.3.0": {
@@ -3481,7 +3478,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "warning": "npm:warning@2.1.0"
     },
-    "npm:react@15.4.0": {
+    "npm:react@15.4.1": {
       "fbjs": "npm:fbjs@0.8.6",
       "loose-envify": "npm:loose-envify@1.3.0",
       "object-assign": "npm:object-assign@4.1.0",
@@ -3522,14 +3519,10 @@ System.config({
     },
     "npm:redux-devtools@3.3.1": {
       "lodash": "npm:lodash@4.17.2",
-      "react": "npm:react@15.4.0",
+      "react": "npm:react@15.4.1",
       "react-redux": "npm:react-redux@4.4.5",
       "redux": "npm:redux@3.6.0",
       "redux-devtools-instrument": "npm:redux-devtools-instrument@1.3.2"
-    },
-    "npm:redux-promise-middleware@4.1.0": {
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "redux": "npm:redux@3.6.0"
     },
     "npm:redux@3.6.0": {
       "lodash": "npm:lodash@4.17.2",
