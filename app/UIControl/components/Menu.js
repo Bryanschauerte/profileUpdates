@@ -118,7 +118,6 @@ class Menu extends Component{
 
       setTimeout(
         ()=>{
-          console.log(should, 'should')
           this.props.dispatch(uiActions.aboutAnimation(should));
         },1000)
 
@@ -152,7 +151,6 @@ class Menu extends Component{
 
   render(){
     const categoriesOb = this.getCategories();
-console.log("MENU")
     const{
       changeCategory,
       previewIndex,

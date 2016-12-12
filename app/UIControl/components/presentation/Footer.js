@@ -1,12 +1,10 @@
 import React,{Component, PropTypes} from 'react';
-import DisplaySingleItem from './DisplaySingleItem';
 import * as uiActions from '../../actions/index';
 import {connect} from 'react-redux';
 import { Motion, StaggeredMotion, spring } from 'react-motion';
 
 
 class Footer extends Component {
-
 
   constructor(props){
     super(props);
@@ -19,74 +17,67 @@ class Footer extends Component {
   showContact(){
     return this.props.dispatch(uiActions.showContact());
   }
-      hoverItem(hoverID){
-        event.preventDefault();
-        const reset = 'footer reset';
-         this.props.dispatch(uiActions.hoverChange('footer reset') );
-        return this.props.dispatch(uiActions.hoverChange(hoverID));
+  hoverItem(hoverID){
+    event.preventDefault();
+    const reset = 'footer reset';
+     this.props.dispatch(uiActions.hoverChange('footer reset') );
+    return this.props.dispatch(uiActions.hoverChange(hoverID));
 
-      }
-      stopHoverItem(){
-        const hoverID = null;
-        console.log('stop hover')
-        return this.props.dispatch(uiActions.hoverChange(hoverID) );
-      }
-
+  }
+  stopHoverItem(){
+    const hoverID = null;
+    return this.props.dispatch(uiActions.hoverChange(hoverID) );
+  }
 
 
 
-      render(){
 
-        return (<div id='footer'
-          onClick={this.showContact}>
-          <ul className='list'>
+  render(){
 
-
-                <Motion
-                  defaultStyle={{
-                    fontSpace:window.innerWidth * .045,
-                    r:0
-                    }}
-                  style={{
-
+    return (<div
+      id='footer'
+      onClick={this.showContact}>
+        <ul className='list'>
+            <Motion
+              defaultStyle={
+                {
+                  fontSpace:window.innerWidth * .045,
+                  r:0
+                }}
+              style={
+                {
                   fontSpace: spring(this.props.animations == 'footer'? window.innerWidth * .025 : 2),
                   r:spring(this.props.animations == 'footer'? 100:0)
-
-
                 }}>
 
+                {({ fontSize, fontSpace, r}) =><div className='listContainer' >
 
+                    <li
+                      onClick={this.showContact}
+                      className='listItem'
+                      onMouseEnter={this.hoverItem.bind(null, 'footer')}
+                      onMouseLeave={this.stopHoverItem}
+                      style={{
+                        marginTop:'2%',
+                      color: this.props.animations == 'footer'? uiActions.getColorCategory(this.props.categorySelected):'#e5e5e5',
+                      letterSpacing: `${fontSpace}px`
+                    }}>
+                      <h4 className='contact'>
+                        CONTACT
+                      </h4>
+                    <div className='anaContain' >
+                      <svg onClick={this.showContact} key ={Math.random()} id="TopSVGCirles" height="100%" width="100%">
+                        <circle key ={Math.random()} cx='50%' cy='50%' r={r+'%'} fillOpacity='.5' fill={'#000'} />
+                      </svg>
+                    </div>
 
-                        {({ fontSize, fontSpace, r}) =><div className='listContainer' >
+                  </li>
+                </div>
+              }
 
-                        <li
-                          className='listItem'
-                          onMouseEnter={this.hoverItem.bind(null, 'footer')}
-                          onMouseLeave={this.stopHoverItem}
-                          style={{
-                            marginTop:'2%',
-                          color: this.props.animations == 'footer'? uiActions.getColorCategory(this.props.categorySelected):'#e5e5e5',
-                          letterSpacing: `${fontSpace}px`
-                        }}>
-                        <h4 className='contact'>CONTACT</h4>
-                        <div className='anaContain' >
-                          <svg key ={Math.random()} id="TopSVGCirles" height="100%" width="100%">
-                            <circle key ={Math.random()} cx='50%' cy='50%' r={r+'%'} fillOpacity='.5' fill={'#000'} />
-                            {/* <text x="0%" y="50%"  stroke="none" fill="#242424"  opacity=".4" fontSize="127px" fontFamily="Garamond"><tspan dy="0%">{this.props.displayItem}</tspan></text> */}
-                          </svg>
-                        </div>
-
-                      </li>
-
-
-                      </div>
-                    }
-                  </Motion>
-
-
-
-      </ul>
-    </div>)
+              </Motion>
+            </ul>
+          </div>)
       }
 
 

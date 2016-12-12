@@ -10,72 +10,65 @@ class Header extends Component {
 
   constructor(props){
     super(props);
-
     this.hoverItem = this.hoverItem.bind(this);
     this.stopHoverItem = this.stopHoverItem.bind(this);
-
-
   }
 
 
-      hoverItem(hoverID){
-        event.preventDefault();
-        // const reset = null;
-        //  this.props.dispatch(uiActions.hoverChange(reset) );
-        return this.props.dispatch(uiActions.hoverChange(hoverID));
+  hoverItem(hoverID){
+    event.preventDefault();
+    return this.props.dispatch(uiActions.hoverChange(hoverID));
 
-      }
-      stopHoverItem(){
-        const hoverID = 'header stop';
-        return this.props.dispatch(uiActions.hoverChange(hoverID) );
-      }
+  }
+  stopHoverItem(){
+    const hoverID = 'header stop';
+    return this.props.dispatch(uiActions.hoverChange(hoverID) );
+  }
 
 
 
 
-      render(){
+  render(){
 
-        return (<div  id ='Header'>
+    return (
+      <div  id ='Header'>
         <div>
+
           <Motion
             defaultStyle={{
               fontSpace:4
               }}
             style={{
               fontSpace:spring(this.props.animations == 'header'? window.innerWidth * .025 : 4)
+            }}>
 
-
-          }}>
-
-
-
-                  {({ fontSpace }) =><div className='container' >
-
+              {({ fontSpace }) =><div className='container' >
                     <div
                       className="textContain"
                       style={{
                         cursor:'pointer',
                         letterSpacing:fontSpace+'px'
                         }}>
+
                         <h1
                           onClick={()=>this.props.dispatch(uiActions.showContact())}
                           onMouseLeave={this.stopHoverItem}
                           onMouseEnter={this.hoverItem.bind(null, 'header')}>
+
                             Bryan Schauerte
+
                           </h1>
                         </div>
-
-
+                      </div>
+                    }
+                  </Motion>
                 </div>
-              }
-            </Motion>
-          </div>
-        </div>
-      )
-      }
+              </div>
+            )
+          }
 
 
-}
+        }
 
 const mapStateToProps = (state)=>{
 

@@ -16,7 +16,7 @@ class UIControl extends Component{
 
     this.delayDispatch = this.delayDispatch.bind(this);
     this.handleFooterClick = this.delayDispatch.bind(this);
-    this.handleLandingClick = this.handleLandingClick.bind(this);
+    this._handleLandingClick = this._handleLandingClick.bind(this);
     this.hideContact = this.hideContact.bind(this);
 
 
@@ -31,14 +31,10 @@ class UIControl extends Component{
       () => {
         return this.props.dispatch(uiActions[action](payload));
       }, delayTime);
-
   }
-  handleLandingClick(){
-
+  _handleLandingClick(){
       event.preventDefault();
       return this.props.dispatch(uiActions.notJustLanded());
-
-
   }
 
 
@@ -48,20 +44,17 @@ class UIControl extends Component{
 
         <div id = 'Uicontrol' className= 'uiControlCont'>
 
-
-            {
-              this.props.justLanded? <Landing handleClick={this.handleLandingClick}/>:
-            <div><Header />
-              {this.props.showContact? <ContactDisplay hideContact={this.hideContact}/>:<Menu/>}
-
+        {
+          this.props.justLanded? <Landing handleClick={this._handleLandingClick}/>:
+            <div>
+              <Header />
+              {
+                this.props.showContact? <ContactDisplay hideContact={this.hideContact}/>:
+                <Menu/>
+              }
             {this.props.showContact? null:<Footer />}
-
           </div>}
-
-
             </div>
-
-
     )
   }
 }

@@ -108,32 +108,6 @@
   display: flex;
   height: 4%; }
 
-#SplitView {
-  opacity: 1; }
-  #SplitView .outer {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    position: relative;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row; }
-  #SplitView .displayContainer {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column; }
-
 #menu .menuContain {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -199,7 +173,8 @@
   display: flex;
   -webkit-box-flex: 1;
       -ms-flex: 1;
-          flex: 1; }
+          flex: 1;
+  cursor: pointer; }
 
 #galleryMainContain .outterWrapperStyles {
   display: -webkit-box;
@@ -439,20 +414,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  position: relative; }
-  #SplitView .outerContainer {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    position: relative;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    background-color: #fff; }
+  position: relative;
+  opacity: 1;
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  color: #fff; }
   #SplitView .innerLeft {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -464,22 +430,11 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    border: 1px solid black;
-    background-color: purple;
-    -webkit-transition: all 500 ease-in-out;
-    transition: all 500 ease-in-out; }
+    border-right: 1px solid #fff;
+    position: relative;
+    -webkit-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out; }
   #SplitView .innerRight {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    background-color: red;
-    color: #fff;
-    -webkit-transition: all 500 ease-in-out;
-    transition: all 500 ease-in-out; }
-  #SplitView .itemInnerCon {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -490,23 +445,49 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    border: 1px solid #fff;
-    margin: 5%; }
-  #SplitView .introductionMe {
+    border: 1px solid black;
+    position: relative;
+    -webkit-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out; }
+  #SplitView .introductionSite {
+    position: relative;
+    padding: 5%; }
+  #SplitView .introduction {
+    position: relative;
+    padding: 5%; }
+  #SplitView .meDeco {
+    position: absolute;
+    height: 90%;
+    width: 90%;
+    opacity: .5;
+    background-color: #fff;
+    top: 5%;
+    left: 5%;
+    border-radius: 1em;
+    box-shadow: inset 1px 1px 1px 3px #ccc;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  #SplitView .list {
+    opacity: 1;
+    color: #fff;
+    z-index: 5;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row; }
-  #SplitView .pictureMe {
-    height: 100%;
-    width: 100%;
-    background-color: black; }
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: relative; }
+    #SplitView .list h1 {
+      letter-spacing: 3px;
+      font-weight: 400; }
+    #SplitView .list li {
+      padding: 2% 0%;
+      text-align: left;
+      color: #fff;
+      opacity: 1; }
 
 #footer {
   cursor: pointer;
@@ -645,7 +626,8 @@
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
-          flex-direction: row; }
+          flex-direction: row;
+  margin-bottom: 2%; }
   #Header .container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -841,10 +823,6 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center; }
-
-#SplitView .splitLeft {
-  position: absolute;
-  overflow: hidden; }
 
 li {
   color: cornflowerblue;

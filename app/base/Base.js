@@ -28,11 +28,11 @@ class Base extends React.Component{
             .then( (response)=> {
                 let contents = response.data;
                 this.props.dispatch(restActions.receivedProfileData(contents));
-                console.log(contents, 'contents');
+
               })
               .catch(function (error) {
                 this.props.dispatch(restActions.receivedError(error));
-                console.log(error, 'error');
+
               });
 
       }
@@ -45,8 +45,6 @@ class Base extends React.Component{
 
 
       componentDidMount(){
-
-
         window.addEventListener('resize', this._handleResize);
         this.requestProfileData();
         this._handleResize();
@@ -59,8 +57,6 @@ class Base extends React.Component{
 
       render(){
         let { children} = this.props;
-        // const { pathname, search, hash } = window.location
-        // const location = `${pathname}${search}${hash}`
         let windowWidth=this.state.windowWidth;
         let windowHeight = this.state.windowHeight;
 

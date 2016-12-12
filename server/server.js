@@ -27,15 +27,8 @@ import secret from './keys/secret';
 const app = express();
 
 
-//browserify.settings.mode = 'production'; //uncomment to disable source watching and enable minification
+browserify.settings.mode = 'production'; //uncomment to disable source watching and enable minification
 browserify.settings({transform: ['babelify']});
-
-//
-// // When a client requests the paths below, we serve a browserified and babelified version of the files.
-// app.use('/build/shared.js', browserify(shared));
-// app.use('/build/bundle.js', browserify('./app.js', {
-//     external: shared
-// }));
 
 
 
@@ -87,14 +80,6 @@ app.get('*', (req, res) => {
       }
     }
 })
-
-// checklist
-// Set NODE_ENV to “production”
-// Ensure your app automatically restarts: pm2
-// Run your app in a cluster:
-// Cache request results: reddis
-// Use a load balancer:
-// Use a reverse proxy
 
 
 //server rendering for base client
@@ -187,7 +172,7 @@ let content = req.body.contentItems;
     {$set: {'contentItems':content}},
     { upsert: true }, (err, result)=>{
     if(err){
-      console.log(err)
+      res.send(result)
     }else{
       res.send(result)
     }

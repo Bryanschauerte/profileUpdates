@@ -46,12 +46,7 @@ export function selectContentItem(index){
   }
 }
 
-// export function selectMain(index){
-//   return {
-//     type:'SELECT_MAIN_CONTENT_INDEX',
-//     payload: index
-//   }
-// }
+
 export function contentItemReset(){
   return {
     type:'CONTENT_ITEM_RESET'

@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from './reducers/rootReducer';
 
-const loggerMiddleware = createLogger();
+
 const promiseMiddleWare = promise();
 
 
@@ -24,7 +24,6 @@ class Root extends React.Component {
     render(){
         return (
             <Provider store={store}>
-
                 <Base/>
             </Provider>
         )
