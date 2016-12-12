@@ -16,7 +16,7 @@ const promiseMiddleWare = promise();
 const store = createStore(
     rootReducer,
     applyMiddleware(
-      thunkMiddleware, loggerMiddleware, promiseMiddleWare)
+      thunkMiddleware, promiseMiddleWare)
     );
 
 

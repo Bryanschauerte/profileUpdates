@@ -14,26 +14,14 @@
     flex-direction:column;
     height: 95%;
     width: 95%;
+    position: relative;
   }
   .menuSpace{
     display: flex;
     height: 4%;
   }
 }
-#SplitView{
-  opacity: 1;
-  .outer{
-    display: flex;
-    flex:1;
-    position: relative;
-    flex-direction: row;
-  }
-  .displayContainer{
-    display:flex;
-    flex-grow:1;
-    flex-direction: column;
-  }
-}
+
 
 #menu{
   .menuContain{
@@ -45,6 +33,7 @@
     flex:1;
     flex-direction: column;
     position: relative;
+
 
   }
   .menuBar{
@@ -77,6 +66,7 @@
   .outerContainer{
     display: flex;
     flex:1;
+    cursor: pointer;
   }
   .outterWrapperStyles{
     display: flex;
@@ -230,44 +220,79 @@
 
 }
 
-#DetailsPage{
+#SplitView{
   display: flex;
   flex: 1;
   flex-direction: row;
-  height: 100%;
   position: relative;
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+  color: #fff;
 
-  .outerContainer{
+
+
+  .innerLeft{
     display: flex;
-    flex-direction: column;
     flex: 1;
-    background-color: #fff;
+    flex-direction: column;
+    border-right: 1px solid #fff;
+    position: relative;
+    transition: all 500ms ease-in-out;
+
 
   }
-  .innerContainer{
+
+  .innerRight{
     display: flex;
     flex: 1;
     flex-direction: column;
     border: 1px solid black;
-    margin: 5%;
-
+    position: relative;
+    transition: all 500ms ease-in-out;
   }
-  .itemOuterCon{
-    display: flex;
-    flex:1;
-    background-color: black;
+
+  .introductionSite{
+    position: relative;
+    padding:5%;
+  }
+  .introduction{
+    position: relative;
+    padding:5%;
+  }
+  .meDeco{
+    position: absolute;
+    height: 90%;
+    width: 90%;
     opacity: .5;
-    color:#fff;
-  }
-  .itemInnerCon{
+    background-color: #fff;
+    top:5%;
+    left:5%;
+    border-radius: 1em;
+    box-shadow: inset 1px 1px 1px 3px #ccc;
+
     display: flex;
-    flex: 1;
-    flex-direction: column;
-    border: 1px solid #fff;
-    margin: 5%;
-
   }
+  .list{
+    opacity: 1;
+    color:#fff;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 
+    h1{
+      letter-spacing: 3px;
+      font-weight: 400;
+
+    }
+
+    li{
+      padding: 2% 0%;
+      text-align: left;
+      color:#fff;
+      opacity: 1;
+    }
+  }
 
 }
 
@@ -383,6 +408,7 @@
   width: 100%;
   height: 7%;
   flex-direction: row;
+  margin-bottom:2%;
 
   .container{
     display: flex;
@@ -495,5 +521,70 @@ letter-spacing: 5px;
   }
   .videoClass{
     display: block;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    z-index: 5;
   }
+  .problemSolution{
+    ul{
+      list-style: none;
+      padding: 0;
+      li{
+        color:#fff;
+      }
+    }
+    padding:5%;
+    box-shadow: inset 0 0 6px #eee;
+  }
+}
+.problemSolutionFooter{
+  margin-top: 5%;
+  h2{
+    text-align: center;
+    letter-spacing: 7px;
+    font-weight: bolder;
+    font-size: 2em;
+  }
+}
+
+.galleryHeader{
+    margin: 1px;
+    padding-left: 5%;
+    color: #FF4900;
+    letter-spacing: 3px;
+
+    h3{
+      cursor: pointer;
+      width: 10%;
+    }
+
+}
+#footer{
+  ul.list{
+    li{
+      opacity: 1;
+      display: flex;
+      margin: 0;
+      align-self: center;
+      height: 100%;
+      width: 30%;
+      justify-content: center;
+      position: relative;
+      border-radius: 2em;
+
+    }
+  }
+}
+.splitImgCont{
+  position: relative;
+}
+.splitImg{
+  position: absolute;
+  min-height: 300px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
 }

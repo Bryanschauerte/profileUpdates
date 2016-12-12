@@ -30,7 +30,7 @@ class GistAddition extends React.Component{
 
 
   render(){
-    let framstyle = {width:'100%', fontSize:'1em'}
+    let framstyle = {width:'100%',minHeight:'400', fontSize:'1em'}
     return(<div><iframe ref={this.props.gistId} style={framstyle}>
       <p>Your browser does not support iframes.
         <a target="_blank" href={'https://gist.github.com/Bryanschauerte/' + this.props.gistId + '.js'}>

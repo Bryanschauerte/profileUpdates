@@ -49,10 +49,14 @@ class UIControl extends Component{
         <div id = 'Uicontrol' className= 'uiControlCont'>
 
 
-            {this.props.justLanded? <Landing handleClick={this.handleLandingClick}/>:
+            {
+              this.props.justLanded? <Landing handleClick={this.handleLandingClick}/>:
             <div><Header />
               {this.props.showContact? <ContactDisplay hideContact={this.hideContact}/>:<Menu/>}
-            <Footer /></div>}
+
+            {this.props.showContact? null:<Footer />}
+
+          </div>}
 
 
             </div>

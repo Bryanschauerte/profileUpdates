@@ -54,9 +54,11 @@ class Header extends Component {
                     <div
                       className="textContain"
                       style={{
+                        cursor:'pointer',
                         letterSpacing:fontSpace+'px'
                         }}>
                         <h1
+                          onClick={()=>this.props.dispatch(uiActions.showContact())}
                           onMouseLeave={this.stopHoverItem}
                           onMouseEnter={this.hoverItem.bind(null, 'header')}>
                             Bryan Schauerte

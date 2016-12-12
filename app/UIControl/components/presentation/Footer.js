@@ -64,19 +64,11 @@ class Footer extends Component {
                           onMouseEnter={this.hoverItem.bind(null, 'footer')}
                           onMouseLeave={this.stopHoverItem}
                           style={{
-                          opacity:'1',
+                            marginTop:'2%',
                           color: this.props.animations == 'footer'? uiActions.getColorCategory(this.props.categorySelected):'#e5e5e5',
-                          letterSpacing: `${fontSpace}px`,
-                          margin:'0',
-                          alignSelf:'center',
-                          width:'30%',
-                          height:'100%',
-                          display:'flex',
-                          justifyContent:'center',
-                          position:'relative',
-                          borderRadius:'2em'
+                          letterSpacing: `${fontSpace}px`
                         }}>
-                        <h4 className='contact' >CONTACT</h4>
+                        <h4 className='contact'>CONTACT</h4>
                         <div className='anaContain' >
                           <svg key ={Math.random()} id="TopSVGCirles" height="100%" width="100%">
                             <circle key ={Math.random()} cx='50%' cy='50%' r={r+'%'} fillOpacity='.5' fill={'#000'} />

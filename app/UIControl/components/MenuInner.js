@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import * as uiActions from '../actions/index';
 import { Motion, StaggeredMotion, spring } from 'react-motion';
-import DetailsPage from './presentation/DetailsPage';
-// import GallerySubText from './presentation/GallerySubText';
+
+import GalleryHeader from './presentation/GalleryHeader';
 import ContentGallery from './ContentGallery';
 import WildCard from './presentation/WildCard.js';
 
-class SplitView extends Component{
+class MenuInner extends Component{
   constructor(props){
     super(props);
   }
@@ -44,7 +43,7 @@ class SplitView extends Component{
 
                     <div
                       key={Math.random()}
-                      id='SplitView'
+                      id='MenuInner'
                       className="outer"
                       style={{height:x+'%', opacity:1, zIndex:2, display: showContact? 'none':'flex'}}>
 
@@ -58,12 +57,17 @@ class SplitView extends Component{
                           />
 
                             :  <div className="wildcardContainer"  key={Math.random()}>
+                              <GalleryHeader text='BACK' _resetHandle={this.props.selectContentItem}/>
                               <h1 className='wildcardTitle'>{itemsForView[catItemSelectedIndex].contentItems.title}</h1>
                                   {
                                     itemsForView[catItemSelectedIndex].contentItems.main.map((item, index)=>{
 
                                       return<div>
-                                       <WildCard contents={item} key ={item._id} {...this.props}/>
+                                       <WildCard
+                                         contents={item}
+                                         key ={item._id}
+                                         accentColor={this.props.accentColor}
+                                         {...this.props}/>
                                     </div>
                                   })
                                 }
@@ -83,4 +87,4 @@ class SplitView extends Component{
 }
 
 
-export default SplitView
+export default MenuInner

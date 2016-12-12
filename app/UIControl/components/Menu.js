@@ -1,9 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import { Motion, StaggeredMotion, spring, TransitionMotion } from 'react-motion';
 import * as uiActions from '../actions/index';
+import SplitView from './presentation/SplitView';
 
 import {connect} from 'react-redux';
-import SplitView from './SplitView';
+import MenuInner from './MenuInner';
 
 class Menu extends Component{
   constructor(props){
@@ -18,14 +19,34 @@ class Menu extends Component{
     this.getCategoryItems = this.getCategoryItems.bind(this);
     this._previewItem = this._previewItem.bind(this);
     this._selectContentItem = this._selectContentItem.bind(this);
+    this._animateAbout = this._animateAbout.bind(this);
+    this._addSlidingArr = this._addSlidingArr.bind(this);
+    this._triggerSlidingArr = this._triggerSlidingArr.bind(this);
+  }
+
+  _addSlidingArr(arr){
+    this.props.dispatch(uiActions.slideArray(arr));
+  }
+  _triggerSlidingArr(time){
+
+    setTimeout((time)=>{
+
+      this.props.dispatch(uiActions.slideItemRemove(arr));
+
+      if(this.props.slideIn.length> 0){
+        this._triggerSlidingArr(time)
+      }
+
+    },time)
 
   }
+
   _previewItem(i){
 
     this.props.dispatch(uiActions.previewItem(i));//changes preview index
   }
-  _selectContentItem(){
-    const itemIndex = this.props.previewIndex;
+  _selectContentItem(itemIndex=this.props.previewIndex){
+
     this.props.dispatch(uiActions.selectContentItem(itemIndex)); //changes the catItemSelectedIndex
   }
 
@@ -69,22 +90,49 @@ class Menu extends Component{
     }
     //gets the items from the state and brings it to ui
     selectCategory(catIndex, keyName){
-      this.props.dispatch(uiActions.changeStageIndex(1))
-      this.props.dispatch(uiActions.categorySelect(null))
-      this.props.dispatch(uiActions.selectContentItem(null))
-      this.props.dispatch(uiActions.previewItem(0))
-      if(this.props.items[keyName]){
-          this.props.dispatch(uiActions.changeCategoryItems(this.props.items[keyName]))
-      }
-      setTimeout(
-        () => {
-          return this.props.dispatch(uiActions.categorySelect(catIndex))
-        }, 500);
+
+
+        let index = keyName != 'aboutItems'? 1:2;
+        this.props.dispatch(uiActions.changeStageIndex(index))
+        this.props.dispatch(uiActions.categorySelect(null))
+        this.props.dispatch(uiActions.selectContentItem(null))
+        this.props.dispatch(uiActions.previewItem(0))
+        if(this.props.items[keyName]){
+            this.props.dispatch(uiActions.changeCategoryItems(this.props.items[keyName]))
+        }
+        setTimeout(
+          () => {
+            this.props.dispatch(uiActions.categorySelect(catIndex))
+            if(index==2){
+              this._animateAbout(true);
+            }else{
+              this._animateAbout(false);
+            }
+
+          }, 500);
+
 
     }
 
-    selectStageIndex(stage){
-      this.props.dispatch(uiActions.changeStageIndex(stage))
+    _animateAbout(should){
+
+      setTimeout(
+        ()=>{
+          console.log(should, 'should')
+          this.props.dispatch(uiActions.aboutAnimation(should));
+        },1000)
+
+    }
+
+
+    selectStageIndex(stage=1){
+
+      setTimeout(
+        () => {
+          return this.props.dispatch(uiActions.changeStageIndex(stage))
+        }, 500);
+
+
     }
 
     getStyles() {
@@ -104,7 +152,7 @@ class Menu extends Component{
 
   render(){
     const categoriesOb = this.getCategories();
-
+console.log("MENU")
     const{
       changeCategory,
       previewIndex,
@@ -169,8 +217,8 @@ class Menu extends Component{
                     </div>
 
                     {
-                      stageIndex !=0 && categorySelected != null ?(
-                        <SplitView
+                      stageIndex ==1 && categorySelected != null ?(
+                        <MenuInner
                           catItemSelectedIndex={catItemSelectedIndex}
                           previewHandler={this._previewItem}
                           selectContentItem={this._selectContentItem}
@@ -178,6 +226,25 @@ class Menu extends Component{
                           itemsForView={itemsForView}
                           categorySelected ={categorySelected}
                           previewIndex = {previewIndex}
+                          _accentColor={uiActions.getColorCategory(categorySelected, 'notStandard')}
+
+                        />
+                      ): null
+                    }
+                    {
+                      stageIndex ==2 ?(
+                        <SplitView
+                          catItemSelectedIndex={catItemSelectedIndex}
+                          showContact={showContact}
+                          itemsForView={itemsForView}
+                          categorySelected ={categorySelected}
+                          previewIndex = {previewIndex}
+                          stageIndex={stageIndex}
+                          slideIn={this.props.slideIn}
+                          animateAbout={this.props.animateAbout}
+                          _accentColor={uiActions.getColorCategory}
+
+
 
                         />
                       ): null
@@ -216,6 +283,7 @@ const mapStateToProps = (state)=>{
     hasGottenData: state.siteInfo.receivedData,
     hasError: state.siteInfo.error,
     animations: state.uIState.uiStructure.animations.hover,
+    slideIn: state.uIState.uiStructure.animations.slideIn,
     stageIndex: state.uIState.uiStructure.stageIndex,
     categories: state.uIState.uiStructure.categories,
     categorySelected: state.uIState.uiStructure.categorySelected,
@@ -224,6 +292,7 @@ const mapStateToProps = (state)=>{
 
     mainContentIndex:state.uIState.uiStructure.mainContentIndex,
     showContact:state.uIState.uiStructure.showContact,
+    animateAbout:state.uIState.uiStructure.animateAbout,
     itemsForView: state.uIState.uiStructure.itemsForView
   }
 }

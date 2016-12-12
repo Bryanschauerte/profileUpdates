@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { StaggeredMotion, spring } from 'react-motion';
 
+
 import prefixAll from 'inline-style-prefixer/static';
 
 class ContentGallery extends Component {
@@ -34,6 +35,7 @@ class ContentGallery extends Component {
         <div
           id='galleryMainContain'
           className="outerContainer">
+
         <div
         key={Math.random()}
         className='outterWrapperStyles'>
@@ -85,7 +87,7 @@ class ContentGallery extends Component {
 
                   return <div
                             className='itemStyle'
-                            onClick={i!=this.props.previewIndex?()=>this.props.previewHandler(i):null}
+                            onClick={i!=this.props.previewIndex?()=>this.props.previewHandler(i):()=>this.props.selectContentItem(this.props.previewIndex)}
                             key={this.props.itemsForView[i].contentItems.previewContents.previewTitle+ Math.random()}
                             style={productStyles}>
 
@@ -127,7 +129,8 @@ class ContentGallery extends Component {
       <input
         onClick={()=>this.props.selectContentItem(this.props.previewIndex)}
         type='button'
-        value='Take A Look'/>
+        value='Take A Look'
+        style={{cursor:'pointer'}}/>
           </div>
 
 

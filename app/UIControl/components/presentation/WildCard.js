@@ -6,7 +6,7 @@ import GistAddition from './wildcardComponents/GistAddition';
 
 const WildCard = (props)=>{
 
-  const {contents} = props;
+  const {contents, accentColor} = props;
 
     function _handleStringForUrl(string, index='all'){
 
@@ -52,13 +52,19 @@ return (<div className='wildCardSolo'>
       <h3>{contents.subHeader}</h3>
     </div>: null}
 
-  {contents.problem?<div className="problemSolution">
-    <ul>
-      <li><h2>Problem:</h2> {contents.problem}</li>
-      <br/>
-      <li><h2>Solution:</h2> {contents.solution}</li>
-    </ul>
-  </div>:null}
+  {contents.problem?<div>
+    <div
+      style={{backgroundColor:props.accentColor}}
+      className="problemSolution">
+      <ul>
+        <li><h3>Problem to solve:</h3> {contents.problem}</li>
+        <br/>
+        <li><h3>Solution:</h3> {contents.solution}</li>
+      </ul>
+  </div>
+  <div className="problemSolutionFooter">
+    <h2>Parts of the Puzzle</h2>
+  </div></div>:null}
 
   {contents.subheader?
     <div><h3>{contents.subheader}</h3></div>: null}
@@ -88,17 +94,20 @@ return (<div className='wildCardSolo'>
       <h4>{contents.mediaTitle}</h4></div>: null}
 
       {contents.containsMedia == 'video'?
-        <div className="addSideMargin">
+        <div >
           <div className="paragraph">
             <h3>{contents.mediaTitle}</h3>
           </div>
+          <div className="videoClass" style = {{backgroundColor:props.accentColor}}>
             <video
-              className='videoClass'
-              src={contents.links}
+              className="videoClass"
+              height="auto"
               width= "100%"
               type="video/mp4"
-              controls/>
-
+              controls>
+                <source src={contents.links} type="video/mp4"></source>
+              </video>
+              </div>
         </div>: null}
 
         {contents.containsMedia == 'images'?<div>

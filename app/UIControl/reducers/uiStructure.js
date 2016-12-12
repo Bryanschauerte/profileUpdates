@@ -6,13 +6,15 @@ const defaultState = {
   previewIndex:null,
   catItemSelectedIndex:null,
   itemsForView:[],
-  categories:[ 'about me', 'blogs', 'demos', 'projects', 'other', 'everything'],
+  categories:[ 'about', 'blogs', 'demos', 'projects', 'other', 'everything'],
   justLanded: true,
   showContact:false,
   navReduce:false,
+  animateAbout:false,
   animations:{
     hover:null,
-    rotate:null
+    rotate:null,
+    slideIn:[]
   }
 }
 
@@ -29,16 +31,13 @@ export default function uiStructure(state = defaultState, action){
 
       return {...state, previewIndex:action.payload};
 
-    // case 'SELECT_MAIN_CONTENT_INDEX':
-    //   return {...state, mainContentIndex:action.payload};
-
     case "CONTENT_ITEM_SELECT":
 
       return {...state, catItemSelectedIndex:action.payload};
 
-    case "CONTENT_ITEM_RESET":
+    case "ANIMATE_ABOUT":
 
-      return {...state, catItemSelectedIndex:null};
+      return {...state, animateAbout:action.payload};
 
     case "CATEGORY_SELECT":
 
@@ -50,15 +49,22 @@ export default function uiStructure(state = defaultState, action){
       animations.hover = action.payload;
       return {...state, animations:animations};
 
+    case "ANIMATION_SLIDE_IN_ADD":
+
+      let slideState = state.animations;
+      slideState.slideIn = action.payload;
+      return {...state, animations:slideState};
+
+    case "ANIMATION_SLIDE_IN_REMOVE":
+
+      let slideArr = state.animations.slideIn.shift();
+      return {...state, animations:slideState};
+
     case "ANIMATION_ROTATE":
 
       let rotate = state.animations;
       rotate.rotate = action.payload;
       return {...state, animations:rotate};
-
-
-    case "TOGGLE_NAV_REDUCE":
-      return {...state, navReduce: !state.navReduce}
 
     case "GET_STAGE":
       return state;

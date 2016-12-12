@@ -16,10 +16,27 @@ export function changeStageIndex(index){
     payload: index
   }
 }
+export function aboutAnimation(shouldAni){
+  return {
+    type:'ANIMATE_ABOUT',
+    payload: shouldAni
+  }
+}
 export function rotateItem(item){
   return {
     type:'ANIMATION_ROTATE',
     payload: item
+  }
+}
+export function slideArray(arr){
+  return {
+    type:'ANIMATION_SLIDE_IN_ADD',
+    payload: arr
+  }
+}
+export function slideItemRemove(){
+  return {
+    type:'ANIMATION_SLIDE_IN_REMOVE'
   }
 }
 export function selectContentItem(index){
