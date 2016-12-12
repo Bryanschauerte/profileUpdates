@@ -2502,7 +2502,6 @@ System.config({
     "redux-logger": "npm:redux-logger@2.6.1",
     "scss": "github:KevCJones/plugin-scss@0.2.10",
     "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@0.5.7",
-    "uuid-token-generator": "npm:uuid-token-generator@0.5.0",
     "github:KevCJones/plugin-scss@0.2.10": {
       "autoprefixer": "npm:autoprefixer@6.3.6",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -3344,10 +3343,6 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0",
       "zlib": "github:jspm/nodelibs-zlib@0.1.0"
     },
-    "npm:node-uuid@1.4.7": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "crypto": "github:jspm/nodelibs-crypto@0.1.0"
-    },
     "npm:on-finished@2.3.0": {
       "ee-first": "npm:ee-first@1.1.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -3674,10 +3669,6 @@ System.config({
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:uuid-token-generator@0.5.0": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "node-uuid": "npm:node-uuid@1.4.7"
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"

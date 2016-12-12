@@ -41,7 +41,7 @@ _changeLoadState(){
             <img
               className="sliderArrow"
               onClick={this._handleRightClick}
-              src='/arrow-left.png'/>
+              src='/assets/smPics/arrow-left.png'/>
 
 
             <img
@@ -53,7 +53,7 @@ _changeLoadState(){
              <img
                className="sliderArrow"
                onClick={this._handleRightClick}
-               src='/arrow-right.png'/>
+               src='/assets/smPics/arrow-right.png'/>
 
            </div>
      )
