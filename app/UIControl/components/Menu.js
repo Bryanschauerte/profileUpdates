@@ -183,8 +183,8 @@ class Menu extends Component{
 
                     <div className="menuBar"
                       style={{
-                        '-webkit-transform': stageIndex==0 ?'translate3d(0, 200px, 0)':'',
-                        '-ms-transform': stageIndex==0 ?'translate3d(0, 200px, 0)':'',
+                        WebkitTransform: stageIndex==0 ?'translate3d(0, 200px, 0)':'',
+                        msTransform: stageIndex==0 ?'translate3d(0, 200px, 0)':'',
                         transform: stageIndex==0 ?'translate3d(0, 200px, 0)':''  }}>
 
                       {categoriesOb.categories.map((item, index)=>{
