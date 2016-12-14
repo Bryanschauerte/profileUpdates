@@ -4,24 +4,36 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 
 var ENV = process.env.NODE_ENV;
-
+console.log(ENV, 'ENV')
 // build public/main.css
 gulp.task('styles', function() {
     console.log('Building styles...');
     if(ENV === 'prod'){
       gulp.src('app/main.scss')
           .pipe(sass().on('error', sass.logError))
-          .pipe(autoprefixer())
+          .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
           .pipe(gulp.dest('server/assets'))
           .pipe(browserSync.stream());
     }else{
       gulp.src('app/main.scss')
           .pipe(sass().on('error', sass.logError))
-          .pipe(autoprefixer())
+          .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
           .pipe(gulp.dest('public'))
           .pipe(browserSync.stream());
       }
 });
+// set react to production
+
+gulp.task('apply-prod-environment', function() {
+    process.stdout.write("Setting NODE_ENV to 'production'" + "\n");
+    process.env.NODE_ENV = 'production';
+    if (process.env.NODE_ENV != 'production') {
+        throw new Error("Failed to set NODE_ENV to production!!!!");
+    } else {
+        process.stdout.write("Successfully set NODE_ENV to production" + "\n");
+    }
+});
+
 
 // watch for scss changes
 gulp.task('serve', ['styles'], function() {
@@ -90,7 +102,7 @@ gulp.task('serve', ['styles'], function() {
 gulp.task('development', ['serve']);
 
 //NODE_ENV=production
-gulp.task('production', ['styles']);
+gulp.task('production', ['apply-prod-environment','styles']);
 
 gulp.task('default',
     [ENV === 'prod' ? 'production' : 'development']

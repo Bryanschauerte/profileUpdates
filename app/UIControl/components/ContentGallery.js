@@ -77,13 +77,13 @@ class ContentGallery extends Component {
 
                 {interpolatingStyles.map((style, i) => {
 
-                  const productStyles = prefixAll({
+                  const productStyles = {
 
                     // order: i == previewIndex? -1: i,
                     WebkitTransform: `translate3d(0, ${style.y}px, 0) scale(${style.s})`,
                     opacity: style.o,
                     flexGrow:style.f
-                  })
+                  }
 
                   return <div
                             className='itemStyle'
@@ -94,24 +94,24 @@ class ContentGallery extends Component {
                             <h1>{this.props.itemsForView[i].contentItems.previewContents.previewTitle}</h1>
                               <div
 
-                                style={prefixAll({
+                                style={{
                                   backgroundImage:'url('+this.props.itemsForView[i].contentItems.previewContents.imageArrayPreview+ ')',
                                   height:(isNaN(window.innerHeight) ? window.clientHeight : window.innerHeight)/4.5 +'px',
                                   width: "100%",
                                   backgroundRepeat: 'no-repeat',
                                   backgroundSize:'contain',
                                   backgroundPosition: 'center center'
-                                })}>
+                                }}>
 
                               </div>
-                            { this.props.previewIndex==i? <div style={prefixAll({
+                            { this.props.previewIndex==i? <div style={{
                               display:'flex',
                               color:'#fff',
                               flexDirection:'column',
                               flex:'1'
 
 
-                            })}>
+                            }}>
 
                             <div id='GallerySubText' >
 
