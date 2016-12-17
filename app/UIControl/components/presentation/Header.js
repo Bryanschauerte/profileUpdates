@@ -31,8 +31,8 @@ class Header extends Component {
   render(){
 
     return (
-      <div  id ='Header'>
-        <div>
+      <div  style={{height:this.props.height}}>
+        <div id ='Header'>
 
           <Motion
             defaultStyle={{

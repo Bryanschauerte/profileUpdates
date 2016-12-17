@@ -40,19 +40,33 @@ class UIControl extends Component{
 
   render(){
 
+    const height = this.props.height;
+    const width = this.props.width;
     return(
 
-        <div id = 'Uicontrol' className= 'uiControlCont'>
+        <div
+          id = 'Uicontrol'
+          style={{
+            height:this.props.height,
+            width: this.props.width,
+            overflowY:"scroll",
+
+            position: 'relative'
+          }}
+          >
 
         {
           this.props.justLanded? <Landing handleClick={this._handleLandingClick}/>:
             <div>
-              <Header />
+              <Header height={height*.07} />
               {
                 this.props.showContact? <ContactDisplay hideContact={this.hideContact}/>:
-                <Menu/>
+                <Menu
+                  height={height*.86}
+                  width={width}
+                />
               }
-            {this.props.showContact? null:<Footer />}
+            {this.props.showContact ? null:<Footer height={height*.07} width={width}/>}
           </div>}
             </div>
     )

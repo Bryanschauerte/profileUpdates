@@ -33,10 +33,10 @@ class MenuInner extends Component{
         } = this.props;
 
     return(<Motion
-      key={Math.random()}
-          style={{
-            x: spring(categorySelected !=null ? 100 : 0, {stiffness: 480, damping: 20})
-          }}>
+            key={Math.random()}
+            style={{
+              x: spring(categorySelected !=null ? 100 : 0, {stiffness: 480, damping: 20})
+            }}>
                 {({x}) =>
 
 
@@ -45,7 +45,8 @@ class MenuInner extends Component{
                       key={Math.random()}
                       id='MenuInner'
                       className="outer"
-                      style={{height:x+'%', opacity:1, zIndex:2, display: showContact? 'none':'flex'}}>
+
+                      style={{  opacity:1, zIndex:2, display: showContact? 'none':'flex'}}>
 
                         {
                           catItemSelectedIndex==null ?

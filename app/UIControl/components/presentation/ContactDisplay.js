@@ -34,6 +34,7 @@ class ContactDisplay extends Component {
 
         return (
           <div
+            style={{height:this.props.height}}
             id="contactDisplay"
             className='contentdispayContainer'
             onMouseLeave={this.hoverItem.bind(null, 'contact none')} >

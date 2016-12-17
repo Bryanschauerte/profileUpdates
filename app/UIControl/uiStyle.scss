@@ -40,8 +40,12 @@
 }
 
 
-
+div#MenuInner{
+  display: flex;
+  justify-content: center;
+}
 #menu{
+
   .menuContain{
     display: -webkit-box;
   display: -moz-box;
@@ -64,7 +68,8 @@
       flex: 1;
     flex-direction: column;
     position: relative;
-    height:15%;
+
+
 
   }
   .menuBar{
@@ -111,6 +116,7 @@
   }
 
 }
+
 #galleryMainContain{
   .outerContainer{
     display: -webkit-box;
@@ -123,6 +129,7 @@
       -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1;
+
     // cursor: pointer;
   }
   .outterWrapperStyles{
@@ -131,7 +138,7 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-    // flex-wrap: wrap;
+    flex-wrap: wrap;
     flex-flow: row;
     justify-content: center;
     -webkit-box-flex: 1;
@@ -139,7 +146,7 @@
       -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1;
-    margin: 2% 0%;
+      width: 100%;
 
   }
   .innerWrapperStyles{
@@ -153,10 +160,11 @@
       -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1;
-    align-items: center;
+    // align-items: center;
+    width: 100%;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
+
   }
   .itemStyle{
     display: -webkit-box;
@@ -473,7 +481,7 @@
   }
 
 }
-
+//
 #footer{
   cursor: pointer;
   display: -webkit-box;
@@ -483,60 +491,72 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 20%;
-  flex-direction: column;
+  flex-direction: row;
 
-  .list{
+  div.footerContent{
     opacity: 1;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-  }
-  .listContainer {
-    display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-    flex-direction: row;
-    -webkit-box-flex: 1;
-      -moz-box-flex: 1;
-      -webkit-flex: 1;
-      -ms-flex: 1;
-      flex: 1;
-    justify-content: center;
-  }
-  .listItem{
-    opacity: 1;
-    margin: 0;
-    align-self: center;
-    width: 50%;
-    height: 100%;
-    display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-    justify-content: center;
+    width: 40%;
     position: relative;
-    border-radius: 2em;
-
-  }
-  .contact{
-    text-align: center;
-    opacity: 1;
-    color: #eee;
-  }
-  .anaContain{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    border-radius: 2em;
+    text-align:center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
     overflow: hidden;
-
+    border-radius: 2em;
+    h4{
+      text-align: center;
+      width: 100%;
+      color:#fff;
+      z-index: 5;
+    }
   }
 }
+//
+//
+//   .list{
+//     opacity: 1;
+//     list-style: none;
+//     margin: 0;
+//     padding: 0;
+//
+//   }
+//   .listContainer {
+//     display: -webkit-box;
+//   display: -moz-box;
+//   display: -ms-flexbox;
+//   display: -webkit-flex;
+//   display: flex;
+//     flex-direction: row;
+//     -webkit-box-flex: 1;
+//       -moz-box-flex: 1;
+//       -webkit-flex: 1;
+//       -ms-flex: 1;
+//       flex: 1;
+//     justify-content: center;
+//   }
+
+//   .contactCont{
+//     position: relative;
+//
+//   }
+//   .contact{
+//     position: absolute;
+//     text-align: center;
+//     opacity: 1;
+//     color: #eee;
+//   }
+//   .anaContain{
+//     position: absolute;
+//     height: 100%;
+//     width: 100%;
+//     border-radius: 2em;
+//
+//
+//   }
+// }
 
 #GallerySubText{
 
@@ -624,9 +644,9 @@
   display: -webkit-flex;
   display: flex;
   width: 100%;
-  height: 7%;
+  position: absolute;
   flex-direction: row;
-  margin-bottom:2%;
+
 
   .container{
     display: -webkit-box;
@@ -650,7 +670,7 @@
   display: -webkit-flex;
   display: flex;
     color:#e5e5e5;
-    height: 7%;
+
   }
   h1{
     margin:0;
@@ -697,9 +717,7 @@
 
 }
 #Uicontrol{
-  .outerContainer{
 
-  }
 }
 .uiControlCont{
   display: -webkit-box;
@@ -710,6 +728,7 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  position: absolute;
 }
 .WildCardContainer{
   opacity:1;

@@ -61,7 +61,7 @@ class Base extends React.Component{
 
       render(){
         let { children} = this.props;
-      
+
 
 
 
@@ -70,7 +70,7 @@ class Base extends React.Component{
           id='Base'
           onClick={()=>this.props.dispatch(uiActions.notJustLanded())}
           style= {{
-          position:'absolute',
+          position:'relative',
           width:this.state.windowWidth,
           height:this.state.windowHeight
         }}>  <SvgGenerator
@@ -81,11 +81,15 @@ class Base extends React.Component{
             position:'absolute',
             width:this.state.windowWidth *.95,
             height:this.state.windowHeight *.95,
-            top: "4.5%",
-            left:'2.5%',
-            overflow:'scroll'
+            top: this.state.windowHeight*.025,
+            left: this.state.windowWidth *.025,
+            
           }}>
-            <UIControl />
+            <UIControl
+              top={this.state.windowHeight*.025}
+              left={this.state.windowWidth *.025}
+              height={this.state.windowHeight *.95}
+              width={this.state.windowWidth *.95}/>
           </div>
 
 

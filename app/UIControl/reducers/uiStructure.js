@@ -6,7 +6,7 @@ const defaultState = {
   previewIndex:null,
   catItemSelectedIndex:null,
   itemsForView:[],
-  categories:[ 'about', 'blogs', 'demos', 'projects', 'other', 'everything'],
+  categories:[ 'about', 'blogs', 'demos', 'projects', 'other'],
   justLanded: true,
   showContact:false,
   navReduce:false,

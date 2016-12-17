@@ -6,6 +6,8 @@ import SplitView from './presentation/SplitView';
 import {connect} from 'react-redux';
 import MenuInner from './MenuInner';
 
+
+
 class Menu extends Component{
   constructor(props){
     super(props);
@@ -162,23 +164,33 @@ class Menu extends Component{
       animations} = this.props;
 
     return(
-      <div id ='menu' className='menuContain'>
+      <div id ='menu'
+
+        className='menuContain'
+        style={{
+          height:categorySelected !=null ?'100%':this.props.height*.15,
+          width:this.props.width
+        }}>
         <Motion
 
           style={{
-            x: spring(categorySelected !=null ? 100 : 0, {stiffness: 380, damping: 20}),
+            x: spring(categorySelected !=null ? this.props.height : this.props.height*.15, {stiffness: 380, damping: 20}),
             o: spring(categorySelected !=null ? 0.7:1, {stiffness: 480, damping: 20})
           }}>
                 {({x, o}) =>
 
-                <div className= "menuInnerContain">
+                <div
+                  className= "menuInnerContain"
+
+
+                  >
                     <div style={{
                       width:'100%',
-                      height:x+'%',
+                      height:this.props.previewIndex ==null?x:'100%',
                       position: 'absolute',
                       opacity:'.5',
-                      background: `${'linear-gradient('+uiActions.getColorCategory(categorySelected)+','+uiActions.getColorCategory(categorySelected, 'false')+')' }`,
-                      backgroundColor:uiActions.getColorCategory(categorySelected)
+                      background: categorySelected !=null ?`${'linear-gradient('+uiActions.getColorCategory(categorySelected)+','+uiActions.getColorCategory(categorySelected, 'false')+')' }`:'',
+                      backgroundColor:categorySelected !=null ?uiActions.getColorCategory(categorySelected):''
                     }} ></div>
 
                     <div className="menuBar"

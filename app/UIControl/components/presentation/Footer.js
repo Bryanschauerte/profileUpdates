@@ -35,49 +35,60 @@ class Footer extends Component {
   render(){
 
     return (<div
+      onMouseLeave={this.stopHoverItem}
+      style={
+        {
+          height:this.props.height,
+          width: this.props.width}}
       id='footer'
       onClick={this.showContact}>
-        <ul className='list'>
+
+
             <Motion
-              defaultStyle={
-                {
-                  fontSpace:window.innerWidth * .045,
-                  r:0
-                }}
               style={
                 {
                   fontSpace: spring(this.props.animations == 'footer'? window.innerWidth * .025 : 2),
                   r:spring(this.props.animations == 'footer'? 100:0)
                 }}>
 
-                {({ fontSize, fontSpace, r}) =><div className='listContainer' >
+                {({ fontSpace, r}) =><div
+                  className='footerContent'
+                  style={this.props.catItemSelectedIndex!=null ||this.props.previewItem != null?{
+                    position:'absolute',
+                    width:"50%",
+                    top:0,
+                    right:0,
+                    height:'7%'}:null}>
+                  <h4
 
-                    <li
                       onClick={this.showContact}
-                      className='listItem'
                       onMouseEnter={this.hoverItem.bind(null, 'footer')}
-                      onMouseLeave={this.stopHoverItem}
+
                       style={{
-                        marginTop:'2%',
-                      color: this.props.animations == 'footer'? uiActions.getColorCategory(this.props.categorySelected):'#e5e5e5',
+                        position:'absolute',
+                        textAlign:'center',
+                      color: this.props.animations == 'footer'? uiActions.getColorCategory(this.props.categorySelected, "special"):'#e5e5e5',
                       letterSpacing: `${fontSpace}px`
-                    }}>
-                      <h4 className='contact'>
-                        CONTACT
-                      </h4>
-                    <div className='anaContain' >
-                      <svg onClick={this.showContact} key ={Math.random()} id="TopSVGCirles" height="100%" width="100%">
-                        <circle key ={Math.random()} cx='50%' cy='50%' r={r+'%'} fillOpacity='.5' fill={'#000'} />
-                      </svg>
+                    }}>CONTACT</h4>
+                        <svg
+                          onMouseLeave={this.stopHoverItem}
+                          onClick={this.showContact}
+                          key ={Math.random()}
+                           height="100%" width="100%">
+                          <circle key ={Math.random()} cx='50%' cy='50%' r={r+'%'} fillOpacity='.5' fill={'#000'} />
+                        </svg>
+
+
+
+
                     </div>
 
-                  </li>
-                </div>
+
+
               }
 
               </Motion>
-            </ul>
-          </div>)
+</div>)
       }
 
 
@@ -89,6 +100,8 @@ const mapStateToProps = (state)=>{
 
     categories: state.uIState.uiStructure.categories,
     categorySelected: state.uIState.uiStructure.categorySelected,
+    catItemSelectedIndex: state.uIState.uiStructure.catItemSelectedIndex,
+    previewItem: state.uIState.uiStructure.previewItem,
     dataBaseContents:state.uIState.uiStructure.dataBaseContents,
     mainContentIndex:state.uIState.uiStructure.mainContentIndex,
     animations: state.uIState.uiStructure.animations.hover
