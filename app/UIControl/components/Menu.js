@@ -98,7 +98,7 @@ class Menu extends Component{
         this.props.dispatch(uiActions.changeStageIndex(index))
         this.props.dispatch(uiActions.categorySelect(null))
         this.props.dispatch(uiActions.selectContentItem(null))
-        this.props.dispatch(uiActions.previewItem(0))
+        this.props.dispatch(uiActions.previewItem(null))
         if(this.props.items[keyName]){
             this.props.dispatch(uiActions.changeCategoryItems(this.props.items[keyName]))
         }
@@ -186,15 +186,17 @@ class Menu extends Component{
                   >
                     <div style={{
                       width:'100%',
-                      height:this.props.previewIndex ==null?x:'100%',
+                      height:this.props.previewIndex ==null ? x:'100%',
                       position: 'absolute',
                       opacity:'.5',
+
                       background: categorySelected !=null ?`${'linear-gradient('+uiActions.getColorCategory(categorySelected)+','+uiActions.getColorCategory(categorySelected, 'false')+')' }`:'',
                       backgroundColor:categorySelected !=null ?uiActions.getColorCategory(categorySelected):''
                     }} ></div>
 
                     <div className="menuBar"
                       style={{
+
                         WebkitTransform: stageIndex==0 ?'translate3d(0, 200px, 0)':'',
                         msTransform: stageIndex==0 ?'translate3d(0, 200px, 0)':'',
                         transform: stageIndex==0 ?'translate3d(0, 200px, 0)':''  }}>
@@ -242,7 +244,7 @@ class Menu extends Component{
                       ): null
                     }
                     {
-                      stageIndex ==2 ?(
+                      stageIndex ==2 ?(<div>
                         <SplitView
                           catItemSelectedIndex={catItemSelectedIndex}
                           showContact={showContact}
@@ -257,6 +259,13 @@ class Menu extends Component{
 
 
                         />
+                        <div
+                          className="subAbout">
+                          <h2>
+                            Feel free to reach out!
+                          </h2>
+                        </div>
+                      </div>
                       ): null
                     }
                   </div>
@@ -285,7 +294,7 @@ const mapStateToProps = (state)=>{
     items:{
       aboutItems: state.siteInfo.aboutItems,
       blogItems: state.siteInfo.blogItems,
-      demoItems: state.siteInfo.demoItems,
+      bitsItems: state.siteInfo.bitsItems,
       projectItems: state.siteInfo.projectItems,
       otherItems: state.siteInfo.otherItems,
       allItems: state.siteInfo.allItems

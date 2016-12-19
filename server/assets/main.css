@@ -160,7 +160,8 @@ div#MenuInner {
       justify-content: center;
   -ms-flex: 1;
   flex: 1;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 4%; }
 
 #galleryMainContain .innerWrapperStyles {
   display: -ms-flexbox;
@@ -356,7 +357,6 @@ div#MenuInner {
     flex: 1;
     -ms-flex-direction: column;
         flex-direction: column;
-    border: 1px solid black;
     position: relative;
     transition: all 500ms ease-in-out; }
   #SplitView .introductionSite {
@@ -665,6 +665,24 @@ div#MenuInner {
         justify-content: center; }
     #contactDisplay .linkImgContain a h1 {
       font-size: 1em; } }
+
+.contentHeader {
+  color: #fff;
+  padding: 0% 2.5%;
+  border-bottom: 1px solid #fff; }
+  .contentHeader h3 {
+    color: #fff; }
+  .contentHeader p {
+    padding: 0% 2.5%;
+    line-height: 1.5em;
+    text-indent: 5%; }
+
+.subAbout {
+  opacity: 1;
+  text-align: center;
+  color: #fff;
+  z-index: 10;
+  position: relative; }
 
 ::-webkit-scrollbar {
   display: none; }

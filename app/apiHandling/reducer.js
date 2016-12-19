@@ -5,10 +5,11 @@ const dataStatus = {
     receivedData: false,
     error:null,
     allItems: [],
-    aboutItems:[], //item.contentItems.type == 'About'
-    blogItems:[],//item.contentItems.type == 'Blog'
-    demoItems:[], //item.contentItems.type == 'Demo'
-    projectItems:[],//item.contentItems.type == 'Project'
+    aboutItems:[], //item.contentItems.type == 'about'
+    blogItems:[],//item.contentItems.type == 'blog'
+    bitsItems:[], //item.contentItems.type == 'bits'
+    projectItems:[],//item.contentItems.type == 'project'
+    descriptions:[],//item.contentItems.type == 'descriptions'
     otherItems:[]
 }
 export default function siteInfo(state = dataStatus, action){
@@ -19,9 +20,10 @@ export default function siteInfo(state = dataStatus, action){
       let allItems = action.payload;
       let about=[];
       let blog=[];
-      let demo =[];
+      let bits =[];
       let project=[];
-      let other =[];
+      let descriptions =[];
+      let other = [];
 
       action.payload.map(item=>{
 
@@ -29,14 +31,17 @@ export default function siteInfo(state = dataStatus, action){
           case 'about':
             return about.push(item);
             break;
-          case 'demo':
-            return blog.push(item);
+          case 'bits':
+            return bits.push(item);
             break;
           case 'blog':
-            return demo.push(item);
+            return blog.push(item);
             break;
           case 'project':
             return project.push(item);
+            break;
+          case 'descriptions':
+            return descriptions.push(item);
             break;
           default:
             return other.push(item);
@@ -48,9 +53,10 @@ export default function siteInfo(state = dataStatus, action){
         allItems:allItems,
         aboutItems: about,
         blogItems: blog,
-        demoItems:demo,
-        otherItems:other,
+        bitsItems:bits,
+        descriptions:descriptions,
         projectItems: project,
+        otherItems: other,
         receivedData:true,
         isFetching:false
       }

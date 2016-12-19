@@ -1,9 +1,9 @@
 export function getColorCategory(index, colorType='standard'){
 
   const standard = [
-    "#01b826", "#0B1968", "#0193b8", "#813772", "#b82601","#062f4f"];
+     "#0193b8", "#813772", "#b82601","#062f4f", "#01b826", "#0B1968"];
     const compl = [
-      "#056819", "#062f4f", "#2cd0f9", "#a56f9a", "#ff562b","#0B1968"];
+       "#2cd0f9", "#a56f9a", "#ff562b","#0B1968", "#056819", "#062f4f"];
       if(!index && index!==0){
         return '#062f4f'
       }

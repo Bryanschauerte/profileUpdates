@@ -77,6 +77,7 @@ class SplitView extends Component{
                   </div>
 
                 </div>
+
               )}
               </Motion>)
               }

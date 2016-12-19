@@ -147,6 +147,7 @@ div#MenuInner{
       -ms-flex: 1;
       flex: 1;
       width: 100%;
+      margin-bottom:4%;
 
   }
   .innerWrapperStyles{
@@ -424,7 +425,7 @@ div#MenuInner{
       -ms-flex: 1;
       flex: 1;
     flex-direction: column;
-    border: 1px solid black;
+
     position: relative;
     transition: all 500ms ease-in-out;
   }
@@ -918,4 +919,24 @@ letter-spacing: 5px;
     }
 
   }
+}
+.contentHeader{
+  color:#fff;
+  padding: 0% 2.5%;
+  border-bottom: 1px solid #fff;
+  h3{
+      color:#fff;
+  }
+  p{
+    padding: 0% 2.5%;
+    line-height: 1.5em;
+    text-indent:5%;
+  }
+}
+.subAbout{
+  opacity: 1;
+  text-align: center;
+  color:#fff;
+  z-index: 10;
+  position: relative;
 }

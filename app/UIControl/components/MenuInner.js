@@ -46,7 +46,10 @@ class MenuInner extends Component{
                       id='MenuInner'
                       className="outer"
 
-                      style={{  opacity:1, zIndex:2, display: showContact? 'none':'flex'}}>
+                      style={{
+                        opacity:1,
+                        zIndex:2, 
+                        display: showContact? 'none':'flex'}}>
 
                         {
                           catItemSelectedIndex==null ?
@@ -55,10 +58,13 @@ class MenuInner extends Component{
                             selectContentItem={selectContentItem}
                             itemsForView={itemsForView}
                             previewIndex={this.props.previewIndex}
+                            _accentColor={this.props._accentColor}
                           />
 
                             :  <div className="wildcardContainer"  key={Math.random()}>
-                              <GalleryHeader text='BACK' _resetHandle={this.props.selectContentItem}/>
+                              <GalleryHeader
+                                text='BACK'
+                                _resetHandle={this.props.selectContentItem}/>
                               <h1 className='wildcardTitle'>{itemsForView[catItemSelectedIndex].contentItems.title}</h1>
                                   {
                                     itemsForView[catItemSelectedIndex].contentItems.main.map((item, index)=>{
