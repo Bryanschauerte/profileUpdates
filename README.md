@@ -1,7 +1,7 @@
 
 # Personal Website
 
-![Image of Yaktocat](https://github.com/Bryanschauerte/profileUpdates/out.gif)
+![gif of Site](https://github.com/Bryanschauerte/profileUpdates/blob/master/out.gif
 
 ## Node server
 
