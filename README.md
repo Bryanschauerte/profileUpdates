@@ -1,7 +1,8 @@
 
 # Personal Website
 
-![gif of Site](https://github.com/Bryanschauerte/profileUpdates/blob/master/out.gif
+![Image of Site]
+(https://github.com/Bryanschauerte/profileUpdates/blob/master/out.gif)
 
 ## Node server
 
